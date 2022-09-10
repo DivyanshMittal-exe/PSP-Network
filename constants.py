@@ -1,6 +1,7 @@
 import socket
 import random
-
+from turtle import st
+# import re
 
 
 n = 5
@@ -8,23 +9,25 @@ data_file = "A2_small_file.txt"
 localIP     = "127.0.0.1"
 bufferSize  = 1024
 end_msg = "Done_quitting"
+ign_msg = "IDontHave"
 
-server_tcp = 20000
+server_tcp = 20023
 
-port   = 20220 
+port   = 12363
 tcp_client_ports = [i for i in range(port,port + n)]
-port += n
+port += 2*n
 
 udp_server_ports = [i for i in range(port,port + n)]
-port += n
+port += 2*n
 
 udp_client_ports = [i for i in range(port,port + n)]
-port += n
+port += 2*n
 
 
 def send_chunk_over_TCP(TCP_Socket,index,chunk_to_send):
     
-    initial_message = str(index) + " " + str(len(chunk_to_send))
+    initial_message = f"{index} {len(chunk_to_send)}?!?\r\n"
+    # str(index) + " " + str(len(chunk_to_send)+ "?!?\r\n")
     TCP_Socket.send(initial_message.encode())
     
     counter = 0
@@ -38,14 +41,23 @@ def send_chunk_over_TCP(TCP_Socket,index,chunk_to_send):
 
 
 def recieve_chunk_over_TCP(TCP_Socket):
+    # TCP_Socket.settimeout(0)
     start_chunk = TCP_Socket.recv(bufferSize).decode(errors='ignore') 
-    if start_chunk == "":
-        return (-2,"")
+    if start_chunk == "" or ign_msg in start_chunk:
+        print(start_chunk)
+        return False,False
     
+    
+    chunk_data = ""
+    start_chunk = start_chunk.split("?!?\r\n")
+    
+    if len(start_chunk) == 2:
+        
+        chunk_data = start_chunk[1]
+    start_chunk = start_chunk[0]
     
     chunk_index,chunk_len = [int(n) for n in start_chunk.split()]
     
-    chunk_data = ""
     
     counter = 0
     while True:
@@ -56,6 +68,7 @@ def recieve_chunk_over_TCP(TCP_Socket):
         chunk_data += stream_data.decode(errors='ignore')
         counter += bufferSize
     
+    print(chunk_data[0:100])
     return (chunk_index,chunk_data)
 
 # tcp_server_ports = generate_ports(n)

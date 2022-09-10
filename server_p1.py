@@ -32,7 +32,9 @@ cache = LRU(max_chunk_size)
 
 
 TCPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
+TCPServerSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 TCPServerSocket.bind((localIP, server_tcp))    
+# TCPServerSocket.settimeout(1000)
 
 TCPServerSocket.listen(n)
     
@@ -45,28 +47,22 @@ while len(TCPClients) < n:
 print(TCPClients)
         
 for index,client in enumerate(TCPClients):
-    
     send_chunk_over_TCP(client,index,chunks[index])
     
-    chunk_to_send = chunks[index]
-    initial_message = str(index) + " " + str(len(chunk_to_send))
-    client.send(initial_message.encode())
-    
-    counter = 0
-    while counter < len(chunk_to_send):
-        stream_data = chunk_to_send[counter: min(counter + bufferSize,len(chunk_to_send))]
-        counter += bufferSize
-        client.send(stream_data.encode())
-    
-    client.send(end_msg.encode())
-    
+
+print("Sent all Chunks")
 
 del data
 del chunks
 
-UDPServerSockets = [socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM) for i in range(n)]
-UDPServerSockets = [s.setblocking(False) for s in UDPServerSockets]
-UDPServerSockets = [s.bind((localIP,port)) for s,port in zip(UDPServerSockets,udp_server_ports)]
+UDPServerSockets = []
+for port in udp_server_ports:
+    print(port)
+    S = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+    S.setblocking(False)
+    S.bind((localIP,port))
+    UDPServerSockets.append(S)
+
 
 satisfied = [False for i in range(n)]
 satisfied_count = 0
@@ -75,7 +71,7 @@ while True:
     if satisfied_count == n:
         break
     
-    for index,soc,client in enumerate(zip(UDPServerSockets,TCPClients)):
+    for index,(soc,client) in enumerate(zip(UDPServerSockets,TCPClients)):
         
         if satisfied[index]:
             continue
@@ -83,6 +79,8 @@ while True:
         try:
             client_req = soc.recvfrom(bufferSize)
             client_req = int(client_req.decode())
+            
+            print(client_req)
             
             if client_req == -1:
                 satisfied[index] = True
@@ -93,41 +91,22 @@ while True:
                 
                 if cache_chunk == "":
                     bytesToSend   = str.encode(str(client_req))
-                    for req_index,req_soc in enumerate(UDPServerSockets):
-                        req_soc.sendto(bytesToSend, (localIP, udp_client_ports[req_index]))
+                    for req_soc,client_port in zip(UDPServerSockets,udp_client_ports):
+                        req_soc.sendto(bytesToSend, (localIP, client_port))
                         
-                    for index,client in enumerate(TCPClients):
-                        server_message = client.recv(bufferSize).decode(errors='ignore')
-                        if server_message != "":
-                            chunk_index,chunk_len = [int(n) for n in server_message.split()]
-                            chunk_data = ""
-    
-                            counter = 0
-                            while True:
-                                stream_data = client.recv(bufferSize + 256)
-                                # print(stream_data.decode(errors='ignore'))
-                                if end_msg in stream_data.decode(errors='ignore'):
-                                    chunk_data += stream_data.decode(errors='ignore').replace(end_msg,'')
-                                    break
-                                chunk_data += stream_data.decode(errors='ignore')
-                                counter += bufferSize
-
-                            cache.put(client_req,chunk_data)
+                    for tcp_req_client in TCPClients:
+                        chunk_index,chunk_data = recieve_chunk_over_TCP(tcp_req_client)
+                        if chunk_index != False:
+                            cache.put(chunk_index,chunk_data)
+            
                 
                 cache_chunk = cache.get(client_req) 
+                if cache_chunk == "":
+                    raise "Empty Chunk !"
                 
-                initial_message = str(client_req) + " " + str(len(cache_chunk))
-                client.send(initial_message.encode())
-                
-                counter = 0
-                while counter < len(cache_chunk):
-                    stream_data = cache_chunk[counter: min(counter + bufferSize,len(cache_chunk))]
-                    counter += bufferSize
-                    client.send(stream_data.encode())
-                
-                client.send(end_msg.encode())            
+                send_chunk_over_TCP(client,client_req,cache_chunk)    
         except:
-            pass
+            print("Got No request")
             
         
         
