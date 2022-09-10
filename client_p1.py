@@ -1,20 +1,11 @@
 from constants import *
 import socket
 import concurrent.futures
+import random
 import threading
 
-# print(tcp_server_ports)
-# print(udp_server_ports)
-# print(tcp_client_ports)
-# print(udp_client_ports)
 
-def check_port(port):
-    with socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM) as s:
-        return s.connect_ex((localIP, port)) == 0
-    
 def make_client(port):
-    print(f"{port} {check_port(port)}")
-    index = tcp_client_ports.index(port)
     
     chunks_not_with_me = [i for i in range(n)]
     data_with_me = ["" for i in range(n)]
@@ -26,6 +17,8 @@ def make_client(port):
     start_chunk = TCPClientSocket.recv(bufferSize).decode(errors='ignore')
     print(start_chunk)    
     chunk_index,chunk_len = [int(n) for n in start_chunk.split()]
+    
+    me = chunk_index
     
     chunk_data = ""
     
@@ -43,7 +36,19 @@ def make_client(port):
     data_with_me[chunk_index] = chunk_data
     chunks_not_with_me.remove(chunk_index)
     
-    print(f"{index} {port}: {chunk_index} {len(chunk_data)} {chunk_len}")
+    print(f"{me} {port}: {chunk_index} {len(chunk_data)} {chunk_len}")
+    
+    
+    UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+    UDPClientSocket.bind((localIP,udp_client_ports[me]))
+    
+    
+    while len(chunks_not_with_me) != 0:
+        req_for  = random.choice(chunks_not_with_me)
+        bytesToSend   = str.encode(str(req_for))
+        
+        UDPClientSocket.sendto(bytesToSend, (localIP, udp_server_ports))
+        
     
     TCPClientSocket.shutdown(socket.SHUT_RDWR)
     TCPClientSocket.close()
