@@ -1,19 +1,45 @@
 import socket
-import random
-from turtle import st
-# import re
-
 
 n = 5
-data_file = "A2_small_file.txt"
+
+data_file = "Small.txt"
 localIP     = "127.0.0.1"
-bufferSize  = 1024
+chunkSize  = 1024
+header = 20
+bufferSize = chunkSize + header
+
+data =  ""
+# Here read as binary as non utf-8
+with open(data_file, 'r', encoding='utf-8') as f:
+    data = f.read()
+
+chunk_count = len(data) //1024
+
+if  len(data)  % 1024 != 0:
+    chunk_count += 1
+
+# print(chunk_count)
+del data
+
+# print(chunk_count)
 end_msg = "Done_quitting"
-ign_msg = "IDontHave"
+end_msg = end_msg.ljust(bufferSize)
 
-server_tcp = 20012
 
-port   = 12041
+hab = "I have"
+nthab = "I not have"
+
+skip_chunk = "Skip Chunk !=!"
+skip_chunk = skip_chunk.ljust(bufferSize)
+
+ign_message = "I dont have it"
+ign_message = ign_message.ljust(bufferSize)
+
+port   = 30600
+
+server_tcp = port
+port += 1
+
 
 server_udp = port
 port += 1
@@ -25,57 +51,52 @@ udp_client_ports = [i for i in range(port,port + n)]
 port += n
 
 
-def send_chunk_over_TCP(TCP_Socket,index,chunk_to_send):
+def getTCPmessage(TCPSocket,initial_data = ""):
     
-    initial_message = f"{index} {len(chunk_to_send)}?!?\r\n"
-    # str(index) + " " + str(len(chunk_to_send)+ "?!?\r\n")
-    TCP_Socket.send(initial_message.encode())
+    # print("Here")
     
-    counter = 0
-    while counter < len(chunk_to_send):
-        stream_data = chunk_to_send[counter: min(counter + bufferSize,len(chunk_to_send))]
-        counter += bufferSize
-        TCP_Socket.send(stream_data.encode())
-    
-    TCP_Socket.send(end_msg.encode())
-
-
-
-def recieve_chunk_over_TCP(TCP_Socket):
-    TCP_Socket.settimeout(10)
-    start_chunk = TCP_Socket.recv(bufferSize).decode(errors='ignore') 
-    if start_chunk == "" or ign_msg in start_chunk:
-        print(start_chunk)
-        return False,False
-    
-    
-    chunk_data = ""
-    start_chunk = start_chunk.split("?!?\r\n")
-    
-    if len(start_chunk) == 2:
+    packet = initial_data
+    while len(packet) < bufferSize:
+        message = TCPSocket.recv(bufferSize).decode()
+        packet += message
         
-        chunk_data = start_chunk[1]
-    start_chunk = start_chunk[0]
+    # print("Left here")
     
-    chunk_index,chunk_len = [int(n) for n in start_chunk.split()]
-    
-    
-    counter = 0
-    while True:
-        stream_data = TCP_Socket.recv(bufferSize + 256)
-        if end_msg in stream_data.decode(errors='ignore'):
-            chunk_data += stream_data.decode(errors='ignore').replace(end_msg,'')
-            break
-        chunk_data += stream_data.decode(errors='ignore')
-        counter += bufferSize
-    
-    print(chunk_data[0:100])
-    return (chunk_index,chunk_data)
-
-# tcp_server_ports = generate_ports(n)
-# udp_server_ports = generate_ports(n)
-
-# tcp_client_ports = generate_ports(n)
-# udp_client_ports = generate_ports(n)
+    return packet[:bufferSize],packet[bufferSize:]
 
 
+def send_chunk_over_TCP(sender_tcp,reciever_tcp,chunk_to_send):
+    
+    TCP_Socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
+    TCP_Socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    TCP_Socket.bind((localIP, sender_tcp)) 
+
+    TCP_Socket.connect((localIP,reciever_tcp))
+
+    TCP_Socket.send(chunk_to_send.encode())
+
+    TCP_Socket.shutdown(socket.SHUT_RDWR)
+    TCP_Socket.close()
+    
+def recieve_chunk_over_TCP(reciever_socket,time_out = 1):
+    
+    TCP_Socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
+    TCP_Socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    TCP_Socket.bind((localIP, reciever_socket))    
+    
+    TCP_Socket.listen(1)
+    
+    if time_out != None:
+        TCP_Socket.settimeout(time_out)
+    try:
+        connectionSocket, addr = TCP_Socket.accept()
+        TCP_Socket.setblocking(1) 
+        start_chunk = getTCPmessage(connectionSocket)
+    except:
+        return -1
+    
+  
+    # print(chunk_data[0:100])
+    TCP_Socket.shutdown(socket.SHUT_RDWR)
+    TCP_Socket.close()
+    return start_chunk

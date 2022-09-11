@@ -1,185 +1,130 @@
-from http import server
-from re import I
-from time import sleep
+from pydoc import cli
+from re import T
 import numpy as np
 from constants import *
 import socket
 from LRU import  LRU
-import concurrent.futures
-import  threading
-# print(tcp_server_ports)
-# print(udp_server_ports)
-# print(tcp_client_ports)
-# print(udp_client_ports)
+import sys
 
-data =  ""
+data =  []
 with open(data_file, 'r') as f:
-    data = f.read()
+    while True:
+        chunk = f.read(chunkSize)
+        
+        if not chunk: 
+            break
+        
+        chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8')
+        
+        if len(chunk) < 1024:
+            chunk.ljust(1024)
+        
+        data.append(chunk)
 
+
+cache = LRU()
 
 index_to_split_chunk = np.array_split(np.arange(len(data)), n)
-chunks = [data[x[0]:x[-1] + 1] for x in index_to_split_chunk]
-max_chunk_size = max([len(chunk) for chunk in chunks])
 
-cache = LRU(max_chunk_size)
-
-# TCPClients = []
-
-# def make_udp_connection(port):
-#     UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-#     UDPServerSocket.bind((localIP,port))
-    
-
-
+TCPClients = []
 
 TCPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
-TCPServerSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-TCPServerSocket.bind((localIP, server_tcp))    
-# TCPServerSocket.settimeout(1000)
 
-TCPServerSocket.listen(n)
-    
-TCPClients = []      
-  
+TCPServerSocket.setsockopt(
+        socket.SOL_SOCKET, socket.SO_RCVLOWAT, bufferSize
+    )
+
+# TCPServerSocket.setsockopt(
+#         socket.SOL_SOCKET, socket.SO_SNDLOWAT, bufferSize
+#     )
+
+TCPServerSocket.bind((localIP, server_tcp)) 
+TCPServerSocket.listen(n)       
+
+
+
+
 while len(TCPClients) < n:
-    connectionSocket, addr = TCPServerSocket.accept()
-    print(addr)
-    TCPClients.append(connectionSocket)
-
-sleep(10)
-
-print(TCPClients)
-        
-for index,client in enumerate(TCPClients):
-    send_chunk_over_TCP(client,index,chunks[index])
     
-for client in TCPClients:
-    client.shutdown(socket.SHUT_RDWR)
-    client.close()
-
-print("Sent all Chunks")
-
+    connectionSocket, addr = TCPServerSocket.accept()
+    TCPClients.append(connectionSocket)
+    
+    
+    
+for index,client in enumerate(TCPClients):
+    initial_message = str(index).ljust(bufferSize)
+    
+    client.send(initial_message.encode())
+    # print(initial_message)
+    
+    for id in index_to_split_chunk[index]:
+        message = (str(id).ljust(header) + data[id]).ljust(bufferSize)
+        client.send(message.encode())
+    
+    client.send(end_msg.encode())
+    
 del data
-del chunks
 
 UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-UDPServerSocket.setblocking(False)
+UDPServerSocket.setblocking(True)
 UDPServerSocket.bind((localIP,server_udp))
-
 
 satisfied = [False for i in range(n)]
 satisfied_count = 0
 
+tcpspill =  ""
+
+
 while True:
-    if satisfied_count == n:
-        break
+        if satisfied_count == n:
+            break
     
-    for index,client in enumerate(TCPClients):
+    # try:
+        client_req = UDPServerSocket.recvfrom(bufferSize)
+        print(f"Client asked for {client_req}")
         
-        if satisfied[index]:
-            continue
+        client_index,client_req = [int(i) for i in client_req[0].decode().split()]
         
-        try:
-            client_req = UDPServerSocket.recvfrom(bufferSize)
-            print(client_req)
+        if client_req == -1:
+            satisfied[client_index] = True
+            satisfied_count += 1
+
+        else:
+            # cache_chunk = cache.get(client_req) 
             
-            client_port,client_req = [int(i) for i in client_req[0].decode().split()]
             
-            print(client_req)
-            
-            if client_req == -1:
-                satisfied[index] = True
-                satisfied_count += 1
-            
-            else:
-                cache_chunk = cache.get(client_req) 
-                
-                if cache_chunk == "":
-                    bytesToSend   = str.encode(str(client_req))
-                    for client_port in udp_client_ports:
-                        print(client_port)
-                        UDPServerSocket.sendto(bytesToSend, (localIP, client_port))
+            while cache.get(client_req)  == "":
+                print(f"Initially in cache I dont have {client_req}")
+
+                bytesToSend   = str.encode(str(client_req))
+                for idf,client_port in enumerate(udp_client_ports):
+                    UDPServerSocket.sendto(bytesToSend, (localIP, client_port))
+                    client_response = UDPServerSocket.recvfrom(bufferSize)
+                    
+                    if  client_response == hab:
+                    
                         
-                    for tcp_req_client in TCPClients:
-                        print(tcp_req_client)
-                        chunk_index,chunk_data = recieve_chunk_over_TCP(tcp_req_client)
+                        print("Hab")
+                        client_message, tcpspill = getTCPmessage(TCPClients[idf])
+
+                        chunk_id = int(client_message[:header])
+                        chunk = client_message[header:]
+                        cache.put(chunk_id,chunk)
                         
-                        
-                        if chunk_index != False:
-                            cache.put(chunk_index,chunk_data)
+                        break
+                    
+                    
+                if cache.get(client_req)  == "":
+                    TCPClients[client_index].send(skip_chunk.encode())
+                print(f"Trying to gat {client_req}")
             
-                
-                cache_chunk = cache.get(client_req) 
-                if cache_chunk == "":
-                    raise "Empty Chunk !"
-                
-                send_chunk_over_TCP(client,client_req,cache_chunk)    
-        except:
-            print("Got No request")
+            cache_chunk = cache.get(client_req)
+            if cache_chunk == "":
+                print("FF")
+                sys.exit(1)
             
-        
-        
-        
-
-
-TCPServerSocket.shutdown(socket.SHUT_RDWR)
-TCPServerSocket.close()
-    
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-# ts = []
-# for port in tcp_server_ports:
-#     t = threading.Thread(target=send_initial_chunk,args=[port])
-#     t.start()
-#     ts.append(t)
-    
-# for t in ts:
-#     t.join()    
-
-
-# with concurrent.futures.ThreadPoolExecutor() as executor:
-#     # udp_connections = executor.map(make_udp_connection,udp_server_ports)
-#     tcp_connections = executor.map(send_initial_chunk,tcp_server_ports)
-
-# TCPSockets = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
-# TCPSockets.bind((localIP, Port))
-# TCPSockets.listen(n)
-
-
-# while len(TCPClients) < n:
-#     connectionSocket, addr = TCPSockets.accept()
-#     chunk_to_send = chunks[len(TCPClients)]
-#     connectionSocket.send(str(len(chunk_to_send)).encode())
-#     counter = 0
-#     while counter < len(chunk_to_send):
-#         stream_data = chunk_to_send[counter: min(counter + bufferSize,len(chunk_to_send))]
-#         counter += bufferSize
-#         connectionSocket.send(stream_data.encode())
-    
-#     TCPClients.append(connectionSocket)
-    
-    
-
-
-
+            message = str(client_req).ljust(header) + cache_chunk
+            TCPClients[client_index].send(message.encode())
+            
+    # except:
+        # print("Got No request")
