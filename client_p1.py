@@ -14,6 +14,8 @@ def make_client(port):
     TCPClientSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     TCPClientSocket.bind((localIP, port))
     TCPClientSocket.connect((localIP,server_tcp))
+    TCPClientSocket.settimeout(1000)
+    
     # TCPClientSocket.settimeout(0)
     
     chunk_index,chunk_data = recieve_chunk_over_TCP(TCPClientSocket)
@@ -34,15 +36,16 @@ def make_client(port):
     
     
     while len(chunks_not_with_me) != 0:
-        print("HEre")
+        # print("HEre")
         req_for  = random.choice(chunks_not_with_me)
-        bytesToSend   = str.encode(str(req_for))
+        bytesToSend   = str.encode(str(udp_client_ports[me]) + ' ' + str(req_for))
         
-        UDPClientSocket.sendto(bytesToSend, (localIP, udp_server_ports[me]))
+        UDPClientSocket.sendto(bytesToSend, (localIP,server_udp))
         
         try:
             client_req = UDPClientSocket.recvfrom(bufferSize)
-            client_req = int(client_req.decode())
+            client_req = int(client_req[0].decode())
+            print(f"I want {req_for}, I was asked for {client_req}")
             if client_req not in chunks_not_with_me:
                 send_chunk_over_TCP(TCPClientSocket,client_req,data_with_me[client_req])
             else:
@@ -62,8 +65,8 @@ def make_client(port):
         
         
         
-    bytesToSend   = str.encode(str(-1))
-    UDPClientSocket.sendto(bytesToSend, (localIP, udp_server_ports[me]))
+    bytesToSend   = str.encode(str(udp_client_ports[me]) + ' ' + str(-1))
+    UDPClientSocket.sendto(bytesToSend, (localIP, server_udp))
     
     print("Yes I have all chunks")
         

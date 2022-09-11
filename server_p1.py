@@ -1,5 +1,6 @@
 from http import server
 from re import I
+from time import sleep
 import numpy as np
 from constants import *
 import socket
@@ -42,26 +43,28 @@ TCPClients = []
   
 while len(TCPClients) < n:
     connectionSocket, addr = TCPServerSocket.accept()
+    print(addr)
     TCPClients.append(connectionSocket)
+
+sleep(10)
 
 print(TCPClients)
         
 for index,client in enumerate(TCPClients):
     send_chunk_over_TCP(client,index,chunks[index])
     
+for client in TCPClients:
+    client.shutdown(socket.SHUT_RDWR)
+    client.close()
 
 print("Sent all Chunks")
 
 del data
 del chunks
 
-UDPServerSockets = []
-for port in udp_server_ports:
-    print(port)
-    S = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-    S.setblocking(False)
-    S.bind((localIP,port))
-    UDPServerSockets.append(S)
+UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+UDPServerSocket.setblocking(False)
+UDPServerSocket.bind((localIP,server_udp))
 
 
 satisfied = [False for i in range(n)]
@@ -71,14 +74,16 @@ while True:
     if satisfied_count == n:
         break
     
-    for index,(soc,client) in enumerate(zip(UDPServerSockets,TCPClients)):
+    for index,client in enumerate(TCPClients):
         
         if satisfied[index]:
             continue
         
         try:
-            client_req = soc.recvfrom(bufferSize)
-            client_req = int(client_req.decode())
+            client_req = UDPServerSocket.recvfrom(bufferSize)
+            print(client_req)
+            
+            client_port,client_req = [int(i) for i in client_req[0].decode().split()]
             
             print(client_req)
             
@@ -91,11 +96,15 @@ while True:
                 
                 if cache_chunk == "":
                     bytesToSend   = str.encode(str(client_req))
-                    for req_soc,client_port in zip(UDPServerSockets,udp_client_ports):
-                        req_soc.sendto(bytesToSend, (localIP, client_port))
+                    for client_port in udp_client_ports:
+                        print(client_port)
+                        UDPServerSocket.sendto(bytesToSend, (localIP, client_port))
                         
                     for tcp_req_client in TCPClients:
+                        print(tcp_req_client)
                         chunk_index,chunk_data = recieve_chunk_over_TCP(tcp_req_client)
+                        
+                        
                         if chunk_index != False:
                             cache.put(chunk_index,chunk_data)
             

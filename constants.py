@@ -11,17 +11,18 @@ bufferSize  = 1024
 end_msg = "Done_quitting"
 ign_msg = "IDontHave"
 
-server_tcp = 20023
+server_tcp = 20012
 
-port   = 12363
+port   = 12041
+
+server_udp = port
+port += 1
+
 tcp_client_ports = [i for i in range(port,port + n)]
-port += 2*n
-
-udp_server_ports = [i for i in range(port,port + n)]
-port += 2*n
+port += n
 
 udp_client_ports = [i for i in range(port,port + n)]
-port += 2*n
+port += n
 
 
 def send_chunk_over_TCP(TCP_Socket,index,chunk_to_send):
@@ -41,7 +42,7 @@ def send_chunk_over_TCP(TCP_Socket,index,chunk_to_send):
 
 
 def recieve_chunk_over_TCP(TCP_Socket):
-    # TCP_Socket.settimeout(0)
+    TCP_Socket.settimeout(10)
     start_chunk = TCP_Socket.recv(bufferSize).decode(errors='ignore') 
     if start_chunk == "" or ign_msg in start_chunk:
         print(start_chunk)
