@@ -35,7 +35,7 @@ skip_chunk = skip_chunk.ljust(bufferSize)
 ign_message = "I dont have it"
 ign_message = ign_message.ljust(bufferSize)
 
-port   = 30600
+port   = 31580
 
 server_tcp = port
 port += 1
@@ -51,18 +51,22 @@ udp_client_ports = [i for i in range(port,port + n)]
 port += n
 
 
-def getTCPmessage(TCPSocket,initial_data = ""):
+def getTCPmessage(TCPSocket):
     
     # print("Here")
     
-    packet = initial_data
-    while len(packet) < bufferSize:
-        message = TCPSocket.recv(bufferSize).decode()
+    packet = ""
+    len_left = bufferSize - len(packet)
+    
+    while len_left != 0:
+        message = TCPSocket.recv(len_left).decode()
         packet += message
+        len_left = bufferSize - len(packet)
         
     # print("Left here")
-    
-    return packet[:bufferSize],packet[bufferSize:]
+    # assert len(packet) == bufferSize
+    print(packet[:10])
+    return packet
 
 
 def send_chunk_over_TCP(sender_tcp,reciever_tcp,chunk_to_send):
@@ -70,7 +74,7 @@ def send_chunk_over_TCP(sender_tcp,reciever_tcp,chunk_to_send):
     TCP_Socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
     TCP_Socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     TCP_Socket.bind((localIP, sender_tcp)) 
-
+    
     TCP_Socket.connect((localIP,reciever_tcp))
 
     TCP_Socket.send(chunk_to_send.encode())
@@ -78,13 +82,13 @@ def send_chunk_over_TCP(sender_tcp,reciever_tcp,chunk_to_send):
     TCP_Socket.shutdown(socket.SHUT_RDWR)
     TCP_Socket.close()
     
-def recieve_chunk_over_TCP(reciever_socket,time_out = 1):
+def recieve_chunk_over_TCP(reciever_socket,time_out = 10):
     
     TCP_Socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
     TCP_Socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     TCP_Socket.bind((localIP, reciever_socket))    
     
-    TCP_Socket.listen(1)
+    TCP_Socket.listen(n)
     
     if time_out != None:
         TCP_Socket.settimeout(time_out)
@@ -93,7 +97,7 @@ def recieve_chunk_over_TCP(reciever_socket,time_out = 1):
         TCP_Socket.setblocking(1) 
         start_chunk = getTCPmessage(connectionSocket)
     except:
-        return -1
+        start_chunk = -1
     
   
     # print(chunk_data[0:100])
