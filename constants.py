@@ -35,7 +35,7 @@ skip_chunk = skip_chunk.ljust(bufferSize)
 ign_message = "I dont have it"
 ign_message = ign_message.ljust(bufferSize)
 
-port   = 31580
+port   = 26380
 
 server_tcp = port
 port += 1
@@ -59,13 +59,13 @@ def getTCPmessage(TCPSocket):
     len_left = bufferSize - len(packet)
     
     while len_left != 0:
-        message = TCPSocket.recv(len_left).decode()
+        message = TCPSocket.recv(len_left).decode('utf-8','ignore')
         packet += message
         len_left = bufferSize - len(packet)
         
     # print("Left here")
     # assert len(packet) == bufferSize
-    print(packet[:10])
+    # print(packet[:10])
     return packet
 
 

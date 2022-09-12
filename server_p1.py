@@ -5,6 +5,9 @@ import socket
 from LRU import  LRU
 import sys
 
+import hashlib
+
+
 data =  []
 with open(data_file, 'r') as f:
     while True:
@@ -22,6 +25,12 @@ with open(data_file, 'r') as f:
 
 
 cache = LRU()
+
+hash = hashlib.md5("".join(data).encode()).hexdigest()
+
+print(hash)
+
+# sys.exit(1)
 
 index_to_split_chunk = np.array_split(np.arange(len(data)), n)
 
@@ -84,10 +93,11 @@ satisfied_count = 0
 
 while True:
     
-        if satisfied_count == n:
-            break
     
-    # try:
+    if all(satisfied):
+        break
+    
+    try:
         client_req = UDPServerSocket.recvfrom(bufferSize)
         print(f"Client asked for {client_req}")
         
@@ -95,7 +105,7 @@ while True:
         
         if client_req == -1:
             satisfied[client_index] = True
-            satisfied_count += 1
+            # satisfied_count += 1
 
         else:
             # cache_chunk = cache.get(client_req) 
@@ -108,21 +118,25 @@ while True:
                 bytesToSend   = str.encode(str(client_req))
                 for idf,client_port in enumerate(udp_client_ports):
                     
+                    if idf != client_index:
                     
-                    UDPServerSocket.sendto(bytesToSend, (localIP, client_port))
-                    print(f"Sent to {client_port}")
-                    # start_chunk = getTCPmessage(connectionSocket)
-                    # client_message = recieve_chunk_over_TCP(server_tcp)
-                    client_message = getTCPmessage(TCP_Clients[idf])
-                    
-                    # print(client_message)
-                    
-                    # if client_message != -1 and skip_chunk.strip() not in client_message:
-                    if skip_chunk.strip() not in client_message:
-                        chunk_id = int(client_message[:header])
-                        chunk = client_message[header:]
-                        cache.put(chunk_id,chunk)
-                        break
+                        # UDPServerSocket.sendto(bytesToSend, (localIP, client_port))
+                        # print(f"Sent to {client_port}")
+                        message = ("REQ" + str(client_req)).ljust(bufferSize)
+                        TCP_Clients[idf].send(message.encode())
+                        
+                        # start_chunk = getTCPmessage(connectionSocket)
+                        # client_message = recieve_chunk_over_TCP(server_tcp)
+                        client_message = getTCPmessage(TCP_Clients[idf])
+                        
+                        # print(client_message)
+                        
+                        # if client_message != -1 and skip_chunk.strip() not in client_message:
+                        if skip_chunk.strip() not in client_message:
+                            chunk_id = int(client_message[:header])
+                            chunk = client_message[header:]
+                            cache.put(chunk_id,chunk)
+                            break
                     
                     
                 # if cache.get(client_req)  == "":
@@ -146,6 +160,14 @@ while True:
             #     send_chunk_over_TCP(server_tcp,TCP_Ports[client_index],message)
             
             # TCPClients[client_index].send(message.encode())
-            
-    # except:
-        # print("Got No request")
+           
+    except Exception as e:
+        print(e)
+    finally:
+        print("Got No request")
+        
+
+for client in TCP_Clients:
+    client.send(end_msg.encode()) 
+
+print(hash)
