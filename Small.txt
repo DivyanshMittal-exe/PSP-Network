@@ -1,341 +1,633 @@
-﻿The Project Gutenberg EBook of The Adventures of Sherlock Holmes
-by Sir Arthur Conan Doyle
-(#15 in our series by Sir Arthur Conan Doyle)
+﻿
 
-Copyright laws are changing all over the world. Be sure to check the
-copyright laws for your country before downloading or redistributing
-this or any other Project Gutenberg eBook.
 
-This header should be the first thing seen when viewing this Project
-Gutenberg file.  Please do not remove it.  Do not change or edit the
-header without written permission.
 
-Please read the "legal small print," and other information about the
-eBook and Project Gutenberg at the bottom of this file.  Included is
-important information about your specific rights and restrictions in
-how the file may be used.  You can also find out about how to make a
-donation to Project Gutenberg, and how to get involved.
+                          THE COMPLETE SHERLOCK HOLMES
 
+                               Arthur Conan Doyle
 
-**Welcome To The World of Free Plain Vanilla Electronic Texts**
 
-**eBooks Readable By Both Humans and By Computers, Since 1971**
 
-*****These eBooks Were Prepared By Thousands of Volunteers!*****
+                                Table of contents
 
+               A Study In Scarlet
 
-Title: The Adventures of Sherlock Holmes
+               The Sign of the Four
 
-Author: Sir Arthur Conan Doyle
+                  The Adventures of Sherlock Holmes
+               A Scandal in Bohemia
+               The Red-Headed League
+               A Case of Identity
+               The Boscombe Valley Mystery
+               The Five Orange Pips
+               The Man with the Twisted Lip
+               The Adventure of the Blue Carbuncle
+               The Adventure of the Speckled Band
+               The Adventure of the Engineer's Thumb
+               The Adventure of the Noble Bachelor
+               The Adventure of the Beryl Coronet
+               The Adventure of the Copper Beeches
 
-Release Date: March, 1999  [EBook #1661]
-[Most recently updated: November 29, 2002]
+                  The Memoirs of Sherlock Holmes
+               Silver Blaze
+               The Yellow Face
+               The Stock-Broker's Clerk
+               The "Gloria Scott"
+               The Musgrave Ritual
+               The Reigate Squires
+               The Crooked Man
+               The Resident Patient
+               The Greek Interpreter
+               The Naval Treaty
+               The Final Problem
 
-Edition: 12
+                  The Return of Sherlock Holmes
+               The Adventure of the Empty House
+               The Adventure of the Norwood Builder
+               The Adventure of the Dancing Men
+               The Adventure of the Solitary Cyclist
+               The Adventure of the Priory School
+               The Adventure of Black Peter
+               The Adventure of Charles Augustus Milverton
+               The Adventure of the Six Napoleons
+               The Adventure of the Three Students
+               The Adventure of the Golden Pince-Nez
+               The Adventure of the Missing Three-Quarter
+               The Adventure of the Abbey Grange
+               The Adventure of the Second Stain
 
-Language: English
+               The Hound of the Baskervilles
 
-Character set encoding: ASCII
+               The Valley Of Fear
 
-*** START OF THE PROJECT GUTENBERG EBOOK, THE ADVENTURES OF SHERLOCK HOLMES ***
+                  His Last Bow
+               Preface
+               The Adventure of Wisteria Lodge
+               The Adventure of the Cardboard Box
+               The Adventure of the Red Circle
+               The Adventure of the Bruce-Partington Plans
+               The Adventure of the Dying Detective
+               The Disappearance of Lady Frances Carfax
+               The Adventure of the Devil's Foot
+               His Last Bow
 
+                  The Case-Book of Sherlock Holmes
+               Preface
+               The Illustrious Client
+               The Blanched Soldier
+               The Adventure Of The Mazarin Stone
+               The Adventure of the Three Gables
+               The Adventure of the Sussex Vampire
+               The Adventure of the Three Garridebs
+               The Problem of Thor Bridge
+               The Adventure of the Creeping Man
+               The Adventure of the Lion's Mane
+               The Adventure of the Veiled Lodger
+               The Adventure of Shoscombe Old Place
+               The Adventure of the Retired Colourman
 
 
 
-(Additional editing by Jose Menendez)
 
 
 
-THE ADVENTURES OF
-SHERLOCK HOLMES
 
-BY
 
-SIR ARTHUR CONAN DOYLE
 
-CONTENTS
 
-I.	A Scandal in Bohemia
-II.	The Red-Headed League
-III.	A Case of Identity
-IV.	The Boscombe Valley Mystery
-V.	The Five Orange Pips
-VI.	The Man with the Twisted Lip
-VII.	The Adventure of the Blue Carbuncle
-VIII.	The Adventure of the Speckled Band
-IX.	The Adventure of the Engineer's Thumb
-X.	The Adventure of the Noble Bachelor
-XI.	The Adventure of the Beryl Coronet
-XII.	The Adventure of the Copper Beeches
 
+                               A STUDY IN SCARLET
 
-ADVENTURE  I.  A SCANDAL IN BOHEMIA
 
-I.
 
 
-To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her sex. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position. He never spoke of the softer passions, save with a gibe and a sneer. They were admirable things for the observer--excellent for drawing the veil from men's motives and actions. But for the trained reasoner to admit such intrusions into his own delicate and finely adjusted temperament was to introduce a distracting factor which might throw a doubt upon all his mental results. Grit in a sensitive instrument, or a crack in one of his own high-power lenses, would not be more disturbing than a strong emotion in a nature such as his. And yet there was but one woman to him, and that woman was the late Irene Adler, of dubious and questionable memory.
 
-I had seen little of Holmes lately. My marriage had drifted us away from each other. My own complete happiness, and the home-centred interests which rise up around the man who first finds himself master of his own establishment, were sufficient to absorb all my attention, while Holmes, who loathed every form of society with his whole Bohemian soul, remained in our lodgings in Baker Street, buried among his old books, and alternating from week to week between cocaine and ambition, the drowsiness of the drug, and the fierce energy of his own keen nature. He was still, as ever, deeply attracted by the study of crime, and occupied his immense faculties and extraordinary powers of observation in following out those clues, and clearing up those mysteries which had been abandoned as hopeless by the official police. From time to time I heard some vague account of his doings: of his summons to Odessa in the case of the Trepoff murder, of his clearing up of the singular tragedy of the Atkinson brothers at Trincomalee, and finally of the mission which he had accomplished so delicately and successfully for the reigning family of Holland. Beyond these signs of his activity, however, which I merely shared with all the readers of the daily press, I knew little of my former friend and companion.
+                                Table of contents
 
-One night--it was on the twentieth of March, 1888--I was returning from a journey to a patient (for I had now returned to civil practice), when my way led me through Baker Street. As I passed the well-remembered door, which must always be associated in my mind with my wooing, and with the dark incidents of the Study in Scarlet, I was seized with a keen desire to see Holmes again, and to know how he was employing his extraordinary powers. His rooms were brilliantly lit, and, even as I looked up, I saw his tall, spare figure pass twice in a dark silhouette against the blind. He was pacing the room swiftly, eagerly, with his head sunk upon his chest and his hands clasped behind him. To me, who knew his every mood and habit, his attitude and manner told their own story. He was at work again. He had risen out of his drug-created dreams and was hot upon the scent of some new problem. I rang the bell and was shown up to the chamber which had formerly been in part my own.
+         Part I
+        Mr. Sherlock Holmes
+        The Science Of Deduction
+        The Lauriston Garden Mystery
+        What John Rance Had To Tell
+        Our Advertisement Brings A Visitor
+        Tobias Gregson Shows What He Can Do
+        Light In The Darkness
 
-His manner was not effusive. It seldom was; but he was glad, I think, to see me. With hardly a word spoken, but with a kindly eye, he waved me to an armchair, threw across his case of cigars, and indicated a spirit case and a gasogene in the corner. Then he stood before the fire and looked me over in his singular introspective fashion.
+         Part II
+        On The Great Alkali Plain
+        The Flower Of Utah
+        John Ferrier Talks With The Prophet
+        A Flight For Life
+        The Avenging Angels
+        A Continuation Of The Reminiscences Of John Watson, M.D.
+        The Conclusion
 
-"Wedlock suits you," he remarked. "I think, Watson, that you have put on seven and a half pounds since I saw you."
 
-"Seven!" I answered.
 
-"Indeed, I should have thought a little more. Just a trifle more, I fancy, Watson. And in practice again, I observe. You did not tell me that you intended to go into harness."
 
-"Then, how do you know?"
 
-"I see it, I deduce it. How do I know that you have been getting yourself very wet lately, and that you have a most clumsy and careless servant girl?"
 
-"My dear Holmes," said I, "this is too much. You would certainly have been burned, had you lived a few centuries ago. It is true that I had a country walk on Thursday and came home in a dreadful mess, but as I have changed my clothes I can't imagine how you deduce it. As to Mary Jane, she is incorrigible, and my wife has given her notice, but there, again, I fail to see how you work it out."
 
-He chuckled to himself and rubbed his long, nervous hands together.
 
-"It is simplicity itself," said he; "my eyes tell me that on the inside of your left shoe, just where the firelight strikes it, the leather is scored by six almost parallel cuts. Obviously they have been caused by someone who has very carelessly scraped round the edges of the sole in order to remove crusted mud from it. Hence, you see, my double deduction that you had been out in vile weather, and that you had a particularly malignant boot-slitting specimen of the London slavey. As to your practice, if a gentleman walks into my rooms smelling of iodoform, with a black mark of nitrate of silver upon his right forefinger, and a bulge on the right side of his top-hat to show where he has secreted his stethoscope, I must be dull, indeed, if I do not pronounce him to be an active member of the medical profession."
 
-I could not help laughing at the ease with which he explained his process of deduction. "When I hear you give your reasons," I remarked, "the thing always appears to me to be so ridiculously simple that I could easily do it myself, though at each successive instance of your reasoning I am baffled until you explain your process. And yet I believe that my eyes are as good as yours."
 
-"Quite so," he answered, lighting a cigarette, and throwing himself down into an armchair. "You see, but you do not observe. The distinction is clear. For example, you have frequently seen the steps which lead up from the hall to this room."
 
-"Frequently."
 
-"How often?"
 
-"Well, some hundreds of times."
 
-"Then how many are there?"
 
-"How many? I don't know."
 
-"Quite so! You have not observed. And yet you have seen. That is just my point. Now, I know that there are seventeen steps, because I have both seen and observed. By the way, since you are interested in these little problems, and since you are good enough to chronicle one or two of my trifling experiences, you may be interested in this." He threw over a sheet of thick, pink-tinted notepaper which had been lying open upon the table. "It came by the last post," said he. "Read it aloud."
 
-The note was undated, and without either signature or address.
 
-"There will call upon you to-night, at a quarter to eight o'clock," it said, "a gentleman who desires to consult you upon a matter of the very deepest moment. Your recent services to one of the royal houses of Europe have shown that you are one who may safely be trusted with matters which are of an importance which can hardly be exaggerated. This account of you we have from all quarters received. Be in your chamber then at that hour, and do not take it amiss if your visitor wear a mask."
 
-"This is indeed a mystery," I remarked. "What do you imagine that it means?"
+                                      PART I
 
-"I have no data yet. It is a capital mistake to theorise before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts. But the note itself. What do you deduce from it?"
+                   (Being a reprint from the reminiscences of
+                              John H. Watson, M.D.,
+                      late of the Army Medical Department.)
 
-I carefully examined the writing, and the paper upon which it was written.
 
-"The man who wrote it was presumably well to do," I remarked, endeavouring to imitate my companion's processes. "Such paper could not be bought under half a crown a packet. It is peculiarly strong and stiff."
 
-"Peculiar--that is the very word," said Holmes. "It is not an English paper at all. Hold it up to the light."
 
-I did so, and saw a large "E" with a small "g," a "P," and a large "G" with a small "t" woven into the texture of the paper.
 
-"What do you make of that?" asked Holmes.
+          CHAPTER I
+          Mr. Sherlock Holmes
 
-"The name of the maker, no doubt; or his monogram, rather."
 
-"Not at all. The 'G' with the small 't' stands for 'Gesellschaft,' which is the German for 'Company.' It is a customary contraction like our 'Co.' 'P,' of course, stands for 'Papier.' Now for the 'Eg.' Let us glance at our Continental Gazetteer." He took down a heavy brown volume from his shelves. "Eglow, Eglonitz--here we are, Egria. It is in a German-speaking country--in Bohemia, not far from Carlsbad. 'Remarkable as being the scene of the death of Wallenstein, and for its numerous glass-factories and paper-mills.' Ha, ha, my boy, what do you make of that?" His eyes sparkled, and he sent up a great blue triumphant cloud from his cigarette.
+     In the year 1878 I took my degree of Doctor of Medicine of the
+     University of London, and proceeded to Netley to go through the
+     course prescribed for surgeons in the army. Having completed my
+     studies there, I was duly attached to the Fifth Northumberland
+     Fusiliers as Assistant Surgeon. The regiment was stationed in India
+     at the time, and before I could join it, the second Afghan war had
+     broken out. On landing at Bombay, I learned that my corps had
+     advanced through the passes, and was already deep in the enemy's
+     country. I followed, however, with many other officers who were in
+     the same situation as myself, and succeeded in reaching Candahar in
+     safety, where I found my regiment, and at once entered upon my new
+     duties.
 
-"The paper was made in Bohemia," I said.
+     The campaign brought honours and promotion to many, but for me it had
+     nothing but misfortune and disaster. I was removed from my brigade
+     and attached to the Berkshires, with whom I served at the fatal
+     battle of Maiwand. There I was struck on the shoulder by a Jezail
+     bullet, which shattered the bone and grazed the subclavian artery. I
+     should have fallen into the hands of the murderous Ghazis had it not
+     been for the devotion and courage shown by Murray, my orderly, who
+     threw me across a pack-horse, and succeeded in bringing me safely to
+     the British lines.
 
-"Precisely. And the man who wrote the note is a German. Do you note the peculiar construction of the sentence--'This account of you we have from all quarters received.' A Frenchman or Russian could not have written that. It is the German who is so uncourteous to his verbs. It only remains, therefore, to discover what is wanted by this German who writes upon Bohemian paper and prefers wearing a mask to showing his face. And here he comes, if I am not mistaken, to resolve all our doubts."
+     Worn with pain, and weak from the prolonged hardships which I had
+     undergone, I was removed, with a great train of wounded sufferers, to
+     the base hospital at Peshawar. Here I rallied, and had already
+     improved so far as to be able to walk about the wards, and even to
+     bask a little upon the verandah, when I was struck down by enteric
+     fever, that curse of our Indian possessions. For months my life was
+     despaired of, and when at last I came to myself and became
+     convalescent, I was so weak and emaciated that a medical board
+     determined that not a day should be lost in sending me back to
+     England. I was dispatched, accordingly, in the troopship Orontes, and
+     landed a month later on Portsmouth jetty, with my health
+     irretrievably ruined, but with permission from a paternal government
+     to spend the next nine months in attempting to improve it.
 
-As he spoke there was the sharp sound of horses' hoofs and grating wheels against the curb, followed by a sharp pull at the bell. Holmes whistled.
+     I had neither kith nor kin in England, and was therefore as free as
+     air--or as free as an income of eleven shillings and sixpence a day
+     will permit a man to be. Under such circumstances, I naturally
+     gravitated to London, that great cesspool into which all the loungers
+     and idlers of the Empire are irresistibly drained. There I stayed for
+     some time at a private hotel in the Strand, leading a comfortless,
+     meaningless existence, and spending such money as I had, considerably
+     more freely than I ought. So alarming did the state of my finances
+     become, that I soon realized that I must either leave the metropolis
+     and rusticate somewhere in the country, or that I must make a
+     complete alteration in my style of living. Choosing the latter
+     alternative, I began by making up my mind to leave the hotel, and to
+     take up my quarters in some less pretentious and less expensive
+     domicile.
 
-"A pair, by the sound," said he. "Yes," he continued, glancing out of the window. "A nice little brougham and a pair of beauties. A hundred and fifty guineas apiece. There's money in this case, Watson, if there is nothing else."
+     On the very day that I had come to this conclusion, I was standing at
+     the Criterion Bar, when some one tapped me on the shoulder, and
+     turning round I recognized young Stamford, who had been a dresser
+     under me at Bart's. The sight of a friendly face in the great
+     wilderness of London is a pleasant thing indeed to a lonely man. In
+     old days Stamford had never been a particular crony of mine, but now
+     I hailed him with enthusiasm, and he, in his turn, appeared to be
+     delighted to see me. In the exuberance of my joy, I asked him to
+     lunch with me at the Holborn, and we started off together in a
+     hansom.
 
-"I think that I had better go, Holmes."
+     "Whatever have you been doing with yourself, Watson?" he asked in
+     undisguised wonder, as we rattled through the crowded London streets.
+     "You are as thin as a lath and as brown as a nut."
 
-"Not a bit, Doctor. Stay where you are. I am lost without my Boswell. And this promises to be interesting. It would be a pity to miss it."
+     I gave him a short sketch of my adventures, and had hardly concluded
+     it by the time that we reached our destination.
 
-"But your client--"
+     "Poor devil!" he said, commiseratingly, after he had listened to my
+     misfortunes. "What are you up to now?"
 
-"Never mind him. I may want your help, and so may he. Here he comes. Sit down in that armchair, Doctor, and give us your best attention."
+     "Looking for lodgings," I answered. "Trying to solve the problem as
+     to whether it is possible to get comfortable rooms at a reasonable
+     price."
 
-A slow and heavy step, which had been heard upon the stairs and in the passage, paused immediately outside the door. Then there was a loud and authoritative tap.
+     "That's a strange thing," remarked my companion; "you are the second
+     man to-day that has used that expression to me."
 
-"Come in!" said Holmes.
+     "And who was the first?" I asked.
 
-A man entered who could hardly have been less than six feet six inches in height, with the chest and limbs of a Hercules. His dress was rich with a richness which would, in England, be looked upon as akin to bad taste. Heavy bands of astrakhan were slashed across the sleeves and fronts of his double-breasted coat, while the deep blue cloak which was thrown over his shoulders was lined with flame-coloured silk and secured at the neck with a brooch which consisted of a single flaming beryl. Boots which extended halfway up his calves, and which were trimmed at the tops with rich brown fur, completed the impression of barbaric opulence which was suggested by his whole appearance. He carried a broad-brimmed hat in his hand, while he wore across the upper part of his face, extending down past the cheekbones, a black vizard mask, which he had apparently adjusted that very moment, for his hand was still raised to it as he entered. From the lower part of the face he appeared to be a man of strong character, with a thick, hanging lip, and a long, straight chin suggestive of resolution pushed to the length of obstinacy.
+     "A fellow who is working at the chemical laboratory up at the
+     hospital. He was bemoaning himself this morning because he could not
+     get someone to go halves with him in some nice rooms which he had
+     found, and which were too much for his purse."
 
-"You had my note?" he asked with a deep harsh voice and a strongly marked German accent. "I told you that I would call." He looked from one to the other of us, as if uncertain which to address.
+     "By Jove!" I cried, "if he really wants someone to share the rooms
+     and the expense, I am the very man for him. I should prefer having a
+     partner to being alone."
 
-"Pray take a seat," said Holmes. "This is my friend and colleague, Dr. Watson, who is occasionally good enough to help me in my cases. Whom have I the honour to address?"
+     Young Stamford looked rather strangely at me over his wine-glass.
+     "You don't know Sherlock Holmes yet," he said; "perhaps you would not
+     care for him as a constant companion."
 
-"You may address me as the Count Von Kramm, a Bohemian nobleman. I understand that this gentleman, your friend, is a man of honour and discretion, whom I may trust with a matter of the most extreme importance. If not, I should much prefer to communicate with you alone."
+     "Why, what is there against him?"
 
-I rose to go, but Holmes caught me by the wrist and pushed me back into my chair. "It is both, or none," said he. "You may say before this gentleman anything which you may say to me."
+     "Oh, I didn't say there was anything against him. He is a little
+     queer in his ideas--an enthusiast in some branches of science. As far
+     as I know he is a decent fellow enough."
 
-The Count shrugged his broad shoulders. "Then I must begin," said he, "by binding you both to absolute secrecy for two years; at the end of that time the matter will be of no importance. At present it is not too much to say that it is of such weight it may have an influence upon European history."
+     "A medical student, I suppose?" said I.
 
-"I promise," said Holmes.
+     "No--I have no idea what he intends to go in for. I believe he is
+     well up in anatomy, and he is a first-class chemist; but, as far as I
+     know, he has never taken out any systematic medical classes. His
+     studies are very desultory and eccentric, but he has amassed a lot of
+     out-of-the way knowledge which would astonish his professors."
 
-"And I."
+     "Did you never ask him what he was going in for?" I asked.
 
-"You will excuse this mask," continued our strange visitor. "The august person who employs me wishes his agent to be unknown to you, and I may confess at once that the title by which I have just called myself is not exactly my own."
+     "No; he is not a man that it is easy to draw out, though he can be
+     communicative enough when the fancy seizes him."
 
-"I was aware of it," said Holmes dryly.
+     "I should like to meet him," I said. "If I am to lodge with anyone, I
+     should prefer a man of studious and quiet habits. I am not strong
+     enough yet to stand much noise or excitement. I had enough of both in
+     Afghanistan to last me for the remainder of my natural existence. How
+     could I meet this friend of yours?"
 
-"The circumstances are of great delicacy, and every precaution has to be taken to quench what might grow to be an immense scandal and seriously compromise one of the reigning families of Europe. To speak plainly, the matter implicates the great House of Ormstein, hereditary kings of Bohemia."
+     "He is sure to be at the laboratory," returned my companion. "He
+     either avoids the place for weeks, or else he works there from
+     morning to night. If you like, we shall drive round together after
+     luncheon."
 
-"I was also aware of that," murmured Holmes, settling himself down in his armchair and closing his eyes.
+     "Certainly," I answered, and the conversation drifted away into other
+     channels.
 
-Our visitor glanced with some apparent surprise at the languid, lounging figure of the man who had been no doubt depicted to him as the most incisive reasoner and most energetic agent in Europe. Holmes slowly reopened his eyes and looked impatiently at his gigantic client.
+     As we made our way to the hospital after leaving the Holborn,
+     Stamford gave me a few more particulars about the gentleman whom I
+     proposed to take as a fellow-lodger.
 
-"If your Majesty would condescend to state your case," he remarked, "I should be better able to advise you."
+     "You mustn't blame me if you don't get on with him," he said; "I know
+     nothing more of him than I have learned from meeting him occasionally
+     in the laboratory. You proposed this arrangement, so you must not
+     hold me responsible."
 
-The man sprang from his chair and paced up and down the room in uncontrollable agitation. Then, with a gesture of desperation, he tore the mask from his face and hurled it upon the ground. "You are right," he cried; "I am the King. Why should I attempt to conceal it?"
+     "If we don't get on it will be easy to part company," I answered. "It
+     seems to me, Stamford," I added, looking hard at my companion, "that
+     you have some reason for washing your hands of the matter. Is this
+     fellow's temper so formidable, or what is it? Don't be mealy-mouthed
+     about it."
 
-"Why, indeed?" murmured Holmes. "Your Majesty had not spoken before I was aware that I was addressing Wilhelm Gottsreich Sigismond von Ormstein, Grand Duke of Cassel-Felstein, and hereditary King of Bohemia."
+     "It is not easy to express the inexpressible," he answered with a
+     laugh. "Holmes is a little too scientific for my tastes--it
+     approaches to cold-bloodedness. I could imagine his giving a friend a
+     little pinch of the latest vegetable alkaloid, not out of
+     malevolence, you understand, but simply out of a spirit of inquiry in
+     order to have an accurate idea of the effects. To do him justice, I
+     think that he would take it himself with the same readiness. He
+     appears to have a passion for definite and exact knowledge."
 
-"But you can understand," said our strange visitor, sitting down once more and passing his hand over his high white forehead, "you can understand that I am not accustomed to doing such business in my own person. Yet the matter was so delicate that I could not confide it to an agent without putting myself in his power. I have come incognito from Prague for the purpose of consulting you."
+     "Very right too."
 
-"Then, pray consult," said Holmes, shutting his eyes once more.
+     "Yes, but it may be pushed to excess. When it comes to beating the
+     subjects in the dissecting-rooms with a stick, it is certainly taking
+     rather a bizarre shape."
 
-"The facts are briefly these: Some five years ago, during a lengthy visit to Warsaw, I made the acquaintance of the well-known adventuress, Irene Adler. The name is no doubt familiar to you."
+     "Beating the subjects!"
 
-"Kindly look her up in my index, Doctor," murmured Holmes without opening his eyes. For many years he had adopted a system of docketing all paragraphs concerning men and things, so that it was difficult to name a subject or a person on which he could not at once furnish information. In this case I found her biography sandwiched in between that of a Hebrew rabbi and that of a staff-commander who had written a monograph upon the deep-sea fishes.
+     "Yes, to verify how far bruises may be produced after death. I saw
+     him at it with my own eyes."
 
-"Let me see!" said Holmes. "Hum! Born in New Jersey in the year 1858. Contralto--hum! La Scala, hum! Prima donna Imperial Opera of Warsaw--yes! Retired from operatic stage--ha! Living in London--quite so! Your Majesty, as I understand, became entangled with this young person, wrote her some compromising letters, and is now desirous of getting those letters back."
+     "And yet you say he is not a medical student?"
 
-"Precisely so. But how--"
+     "No. Heaven knows what the objects of his studies are. But here we
+     are, and you must form your own impressions about him." As he spoke,
+     we turned down a narrow lane and passed through a small side-door,
+     which opened into a wing of the great hospital. It was familiar
+     ground to me, and I needed no guiding as we ascended the bleak stone
+     staircase and made our way down the long corridor with its vista of
+     whitewashed wall and dun-coloured doors. Near the further end a low
+     arched passage branched away from it and led to the chemical
+     laboratory.
 
-"Was there a secret marriage?"
+     This was a lofty chamber, lined and littered with countless bottles.
+     Broad, low tables were scattered about, which bristled with retorts,
+     test-tubes, and little Bunsen lamps, with their blue flickering
+     flames. There was only one student in the room, who was bending over
+     a distant table absorbed in his work. At the sound of our steps he
+     glanced round and sprang to his feet with a cry of pleasure. "I've
+     found it! I've found it," he shouted to my companion, running towards
+     us with a test-tube in his hand. "I have found a re-agent which is
+     precipitated by hoemoglobin, and by nothing else." Had he discovered
+     a gold mine, greater delight could not have shone upon his features.
 
-"None."
+     "Dr. Watson, Mr. Sherlock Holmes," said Stamford, introducing us.
 
-"No legal papers or certificates?"
+     "How are you?" he said cordially, gripping my hand with a strength
+     for which I should hardly have given him credit. "You have been in
+     Afghanistan, I perceive."
 
-"None."
+     "How on earth did you know that?" I asked in astonishment.
 
-"Then I fail to follow your Majesty. If this young person should produce her letters for blackmailing or other purposes, how is she to prove their authenticity?"
+     "Never mind," said he, chuckling to himself. "The question now is
+     about hoemoglobin. No doubt you see the significance of this
+     discovery of mine?"
 
-"There is the writing."
+     "It is interesting, chemically, no doubt," I answered, "but
+     practically--"
 
-"Pooh, pooh! Forgery."
+     "Why, man, it is the most practical medico-legal discovery for years.
+     Don't you see that it gives us an infallible test for blood stains.
+     Come over here now!" He seized me by the coat-sleeve in his
+     eagerness, and drew me over to the table at which he had been
+     working. "Let us have some fresh blood," he said, digging a long
+     bodkin into his finger, and drawing off the resulting drop of blood
+     in a chemical pipette. "Now, I add this small quantity of blood to a
+     litre of water. You perceive that the resulting mixture has the
+     appearance of pure water. The proportion of blood cannot be more than
+     one in a million. I have no doubt, however, that we shall be able to
+     obtain the characteristic reaction." As he spoke, he threw into the
+     vessel a few white crystals, and then added some drops of a
+     transparent fluid. In an instant the contents assumed a dull mahogany
+     colour, and a brownish dust was precipitated to the bottom of the
+     glass jar.
 
-"My private note-paper."
+     "Ha! ha!" he cried, clapping his hands, and looking as delighted as a
+     child with a new toy. "What do you think of that?"
 
-"Stolen."
+     "It seems to be a very delicate test," I remarked.
 
-"My own seal."
+     "Beautiful! beautiful! The old Guiacum test was very clumsy and
+     uncertain. So is the microscopic examination for blood corpuscles.
+     The latter is valueless if the stains are a few hours old. Now, this
+     appears to act as well whether the blood is old or new. Had this test
+     been invented, there are hundreds of men now walking the earth who
+     would long ago have paid the penalty of their crimes."
 
-"Imitated."
+     "Indeed!" I murmured.
 
-"My photograph."
+     "Criminal cases are continually hinging upon that one point. A man is
+     suspected of a crime months perhaps after it has been committed. His
+     linen or clothes are examined, and brownish stains discovered upon
+     them. Are they blood stains, or mud stains, or rust stains, or fruit
+     stains, or what are they? That is a question which has puzzled many
+     an expert, and why? Because there was no reliable test. Now we have
+     the Sherlock Holmes' test, and there will no longer be any
+     difficulty."
 
-"Bought."
+     His eyes fairly glittered as he spoke, and he put his hand over his
+     heart and bowed as if to some applauding crowd conjured up by his
+     imagination.
 
-"We were both in the photograph."
+     "You are to be congratulated," I remarked, considerably surprised at
+     his enthusiasm.
 
-"Oh, dear! That is very bad! Your Majesty has indeed committed an indiscretion."
+     "There was the case of Von Bischoff at Frankfort last year. He would
+     certainly have been hung had this test been in existence. Then there
+     was Mason of Bradford, and the notorious Muller, and Lefevre of
+     Montpellier, and Samson of new Orleans. I could name a score of cases
+     in which it would have been decisive."
 
-"I was mad--insane."
+     "You seem to be a walking calendar of crime," said Stamford with a
+     laugh. "You might start a paper on those lines. Call it the 'Police
+     News of the Past.'"
 
-"You have compromised yourself seriously."
+     "Very interesting reading it might be made, too," remarked Sherlock
+     Holmes, sticking a small piece of plaster over the prick on his
+     finger. "I have to be careful," he continued, turning to me with a
+     smile, "for I dabble with poisons a good deal." He held out his hand
+     as he spoke, and I noticed that it was all mottled over with similar
+     pieces of plaster, and discoloured with strong acids.
 
-"I was only Crown Prince then. I was young. I am but thirty now."
+     "We came here on business," said Stamford, sitting down on a high
+     three-legged stool, and pushing another one in my direction with his
+     foot. "My friend here wants to take diggings, and as you were
+     complaining that you could get no one to go halves with you, I
+     thought that I had better bring you together."
 
-"It must be recovered."
+     Sherlock Holmes seemed delighted at the idea of sharing his rooms
+     with me. "I have my eye on a suite in Baker Street," he said, "which
+     would suit us down to the ground. You don't mind the smell of strong
+     tobacco, I hope?"
 
-"We have tried and failed."
+     "I always smoke 'ship's' myself," I answered.
 
-"Your Majesty must pay. It must be bought."
+     "That's good enough. I generally have chemicals about, and
+     occasionally do experiments. Would that annoy you?"
 
-"She will not sell."
+     "By no means."
 
-"Stolen, then."
+     "Let me see--what are my other shortcomings. I get in the dumps at
+     times, and don't open my mouth for days on end. You must not think I
+     am sulky when I do that. Just let me alone, and I'll soon be right.
+     What have you to confess now? It's just as well for two fellows to
+     know the worst of one another before they begin to live together."
 
-"Five attempts have been made. Twice burglars in my pay ransacked her house. Once we diverted her luggage when she travelled. Twice she has been waylaid. There has been no result."
-
-"No sign of it?"
-
-"Absolutely none."
-
-Holmes laughed. "It is quite a pretty little problem," said he.
-
-"But a very serious one to me," returned the King reproachfully.
-
-"Very, indeed. And what does she propose to do with the photograph?"
-
-"To ruin me."
-
-"But how?"
-
-"I am about to be married."
-
-"So I have heard."
-
-"To Clotilde Lothman von Saxe-Meningen, second daughter of the King of Scandinavia. You may know the strict principles of her family. She is herself the very soul of delicacy. A shadow of a doubt as to my conduct would bring the matter to an end."
-
-"And Irene Adler?"
-
-"Threatens to send them the photograph. And she will do it. I know that she will do it. You do not know her, but she has a soul of steel. She has the face of the most beautiful of women, and the mind of the most resolute of men. Rather than I should marry another woman, there are no lengths to which she would not go--none."
-
-"You are sure that she has not sent it yet?"
-
-"I am sure."
-
-"And why?"
-
-"Because she has said that she would send it on the day when the betrothal was publicly proclaimed. That will be next Monday."
-
-"Oh, then we have three days yet," said Holmes with a yawn. "That is very fortunate, as I have one or two matters of importance to look into just at present. Your Majesty will, of course, stay in London for the present?"
-
-"Certainly. You will find me at the Langham under the name of the Count Von Kramm."
-
-"Then I shall drop you a line to let you know how we progress."
-
-"Pray do so. I shall be all anxiety."
-
-"Then, as to money?"
-
-"You have carte blanche."
-
-"Absolutely?"
-
-"I tell you that I would give one of the provinces of my kingdom to have that photograph."
-
-"And for present expenses?"
-
-The King took a heavy chamois leather bag from under his cloak and laid it on the table.
-
-"There are three hundred pounds in gold and seven hundred in notes," he said.
-
-Holmes scribbled a receipt upon a sheet of his note-book and handed it to him.
-
-"And Mademoiselle's address?" he asked.
-
-"Is Briony Lodge, Serpentine Avenue, St. John's Wood."
-
-Holmes took a note of it. "One other question," said he. "Was the photograph a cabinet?"
-
-"It was."
-
-"Then, good-night, your Majesty, and I trust that we shall soon have some good news for you. And good-night, Watson," he added, as the wheels of the royal brougham rolled down the street. "If you will be good enough to call to-morrow afternoon at three o'clock I should like to chat this little matter over with you."
-
-II.
-
-
-At three o'clock precisely I was at Baker Street, but Holmes had not yet returned. The landlady informed me that he had left the house shortly after eight o'clock in the morning. I sat down beside the fire, however, with the intention of awaiting him, however long he might be. I was already deeply interested in his inquiry, for, though it was surrounded by none of the grim and strange features which were associated with the two crimes which I have already recorded, still, the nature of the case and the exalted station of his client gave it a character of its own. Indeed, apart from the nature of the investigation which my friend had on hand, there was something in his masterly grasp of a situation, and his keen, incisive reasoning, which made it a pleasure to me to study his system of work, and to follow the quick, subtle methods by which he disentangled the most inextricable mysteries. So accustomed was I to his invariable success that the very possibility of his failing had ceased to enter into my head.
-
-It was close upon four before the door opened, and a drunken-looking groom, ill-kempt and side-whiskered, with an inflamed face and disreputable clothes, walked into the room. Accustomed as I was to my friend's amazing powers in the use of disguises, I had to look three times before I was certain that it was indeed he. With a nod he vanished into the bedroom, whence he emerged in five minutes tweed-suited and respectable, as of old. Putting his hands into his pockets, he stretched out his legs in front of the fire and laughed heartily for some minutes.
-
-"Well, really!" he cried, and then he choked and laughed again until he was obliged to lie back, limp and helpless, in the chair.
-
-"What is it?"
-
-"It's quite too funny. I am sure you could never guess how I employed my morning, or what I ended by doing."
-
-"I can't imagine. I suppose that you have been watching the habits, and perhaps the house, of Miss Irene Adler."
-
-"Quite so; but the sequel was rather unusual. I will tell you, however. I left the house a little after eight o'clock this morning in the character of a groom out of work. There is a wonderful sympathy and freemasonry among horsey men. Be one of them, and you will know all that there is to know. I soon found Briony Lodge. It is a bijou villa, with a garden at the back, but built out in front right up to the road, two stories. Chubb lock to the door. Large sitting-room on the right side, well furnished, with long windows almost to the floor, and those preposterous English window fasteners which a child could open. Behind there was nothing remarkable, save that the passage window could be reached from the top of the coach-house. I walked round it and examined it closely from every point of view, but without noting anything else of interest.
-
-"I then lounged down the street and found, as I expected, that there was a mews in a lane which runs down by one wall of the garden. I lent the ostlers a hand in rubbing down their horses, and received in exchange twopence, a glass of half-and-half, two fills of shag tobacco, and as much information as I could desire about Miss Adler, to say nothing of half a dozen other people in the neighbourhood in whom I was not in the least interested, but whose biographies I was compelled to listen to."
-
-"And what of Irene Adler?" I asked.
-
-"Oh, she has turned all the men's heads down in that part. She is the daintiest thing under a bonnet on this planet. So say the Serpentine-mews, to a man. She lives quietly, sings at concerts, drives out at five every day, and returns at seven sharp for dinner. Seldom goes out at other times, except when she sings. Has only one male visitor, but a good deal of him. He is dark, handsome, and dashing, never calls less than once a day, and often twice. He is a Mr. Godfrey Norton, of the Inner Temple. See the advantages of a cabman as a confidant. They had driven him home a dozen times from Serpentine-mews, and knew all about him. When I had listened to all they had to tell, I began to walk up and down near Briony Lodge once more, and to think over my plan of campaign.
-
-
-
+     I laughed at this cross-examination. "I keep a bull pup," I said,
+     "and I object to rows because my nerves are shaken, and I get up at
+     all sorts of ungodly hours, and I am extremely lazy. I have another
+     set of vices when I'm well, but those are the principal ones at
+     present."
+
+     "Do you include violin-playing in your category of rows?" he asked,
+     anxiously.
+
+     "It depends on the player," I answered. "A well-played violin is a
+     treat for the gods--a badly-played one--"
+
+     "Oh, that's all right," he cried, with a merry laugh. "I think we may
+     consider the thing as settled--that is, if the rooms are agreeable to
+     you."
+
+     "When shall we see them?"
+
+     "Call for me here at noon to-morrow, and we'll go together and settle
+     everything," he answered.
+
+     "All right--noon exactly," said I, shaking his hand.
+
+     We left him working among his chemicals, and we walked together
+     towards my hotel.
+
+     "By the way," I asked suddenly, stopping and turning upon Stamford,
+     "how the deuce did he know that I had come from Afghanistan?"
+
+     My companion smiled an enigmatical smile. "That's just his little
+     peculiarity," he said. "A good many people have wanted to know how he
+     finds things out."
+
+     "Oh! a mystery is it?" I cried, rubbing my hands. "This is very
+     piquant. I am much obliged to you for bringing us together. 'The
+     proper study of mankind is man,' you know."
+
+     "You must study him, then," Stamford said, as he bade me good-bye.
+     "You'll find him a knotty problem, though. I'll wager he learns more
+     about you than you about him. Good-bye."
+
+     "Good-bye," I answered, and strolled on to my hotel, considerably
+     interested in my new acquaintance.
+
+
+
+
+
+          CHAPTER II
+          The Science Of Deduction
+
+
+     We met next day as he had arranged, and inspected the rooms at No.
+     221b, Baker Street, of which he had spoken at our meeting. They
+     consisted of a couple of comfortable bed-rooms and a single large
+     airy sitting-room, cheerfully furnished, and illuminated by two broad
+     windows. So desirable in every way were the apartments, and so
+     moderate did the terms seem when divided between us, that the bargain
+     was concluded upon the spot, and we at once entered into possession.
+     That very evening I moved my things round from the hotel, and on the
+     following morning Sherlock Holmes followed me with several boxes and
+     portmanteaus. For a day or two we were busily employed in unpacking
+     and laying out our property to the best advantage. That done, we
+     gradually began to settle down and to accommodate ourselves to our
+     new surroundings.
+
+     Holmes was certainly not a difficult man to live with. He was quiet
+     in his ways, and his habits were regular. It was rare for him to be
+     up after ten at night, and he had invariably breakfasted and gone out
+     before I rose in the morning. Sometimes he spent his day at the
+     chemical laboratory, sometimes in the dissecting-rooms, and
+     occasionally in long walks, which appeared to take him into the
+     lowest portions of the City. Nothing could exceed his energy when the
+     working fit was upon him; but now and again a reaction would seize
+     him, and for days on end he would lie upon the sofa in the
+     sitting-room, hardly uttering a word or moving a muscle from morning
+     to night. On these occasions I have noticed such a dreamy, vacant
+     expression in his eyes, that I might have suspected him of being
+     addicted to the use of some narcotic, had not the temperance and
+     cleanliness of his whole life forbidden such a notion.
+
+     As the weeks went by, my interest in him and my curiosity as to his
+     aims in life, gradually deepened and increased. His very person and
+     appearance were such as to strike the attention of the most casual
+     observer. In height he was rather over six feet, and so excessively
+     lean that he seemed to be considerably taller. His eyes were sharp
+     and piercing, save during those intervals of torpor to which I have
+     alluded; and his thin, hawk-like nose gave his whole expression an
+     air of alertness and decision. His chin, too, had the prominence and
+     squareness which mark the man of determination. His hands were
+     invariably blotted with ink and stained with chemicals, yet he was
+     possessed of extraordinary delicacy of touch, as I frequently had
+     occasion to observe when I watched him manipulating his fragile
+     philosophical instruments.
+
+     The reader may set me down as a hopeless busybody, when I confess how
+     much this man stimulated my curiosity, and how often I endeavoured to
+     break through the reticence which he showed on all that concerned
+     himself. Before pronouncing judgment, however, be it remembered, how
+     objectless was my life, and how little there was to engage my
+     attention. My health forbade me from venturing out unless the weather
+     was exceptionally genial, and I had no friends who would call upon me
+     and break the monotony of my daily existence. Under these
+     circumstances, I eagerly hailed the little mystery which hung around
+     my companion, and spent much of my time in endeavouring to unravel
+     it.
+
+     He was not studying medicine. He had himself, in reply to a question,
+     confirmed Stamford's opinion upon that point. Neither did he appear
+     to have pursued any course of reading which might fit him for a
+     degree in science or any other recognized portal which would give him
+     an entrance into the learned world. Yet his zeal for certain studies
+     was remarkable, and within eccentric limits his knowledge was so
+     extraordinarily ample and minute that his observations have fairly
+     astounded me. Surely no man would work so hard or attain such precise
+     information unless he had some definite end in view. Desultory
+     readers are seldom remarkable for the exactness of their learning. No
+     man burdens his mind with small matters unless he has some very good
+     reason for doing so.
+
+     His ignorance was as remarkable as his knowledge. Of contemporary
+     literature, philosophy and politics he appeared to know next to
+     nothing. Upon my quoting Thomas Carlyle, he inquired in the naivest
+     way who he might be and what he had done. My surprise reached a
+     climax, however, when I found incidentally that he was ignorant of
+     the Copernican Theory and of the composition of the Solar System.
+     That any civilized human being in this nineteenth century should not
+     be aware that the earth travelled round the sun appeared to be to me
+     such an extraordinary fact that I could hardly realize it.
+
+     "You appear to be astonished," he said, smiling at my expression of
+     surprise. "Now that I do know it I shall do my best to forget it."
+
+     "To forget it!"
+
+     "You see," he explained, "I consider that a man's brain originally is
+     like a little empty attic, and you have to stock it with such
+     furniture as you choose. A fool takes in all the lumber of every sort
+     that he comes across, so that the knowledge which might be useful to
+     him gets crowded out, or at best is jumbled up with a lot of other
+     things so that he has a difficulty in laying his hands upon it. Now
+     the skilful workman is very careful indeed as to what he takes into
+     his brain-attic. He will have nothing but the tools which may help
+     him in doing his work, but of these he has a large assortment, and
+     all in the most perfect order. It is a mistake to think that that
+     little room has elastic walls and can distend to any extent. Depend
+     upon it there comes a time when for every addition of knowledge you
+     forget something that you knew before. It is of the highest
+     importance, therefore, not to have useless facts elbowing out the
+     useful ones."
+
+     "But the Solar System!" I protested.
+
+     "What the deuce is it to me?" he interrupted impatiently; "you say
+     that we go round the sun. If we went round the moon it would not make
+     a pennyworth of difference to me or to my work."
+
+     I was on the point of asking him what that work might be, but
+     something in his manner showed me that the question would be an
+     unwelcome one. I pondered over our short conversation, however, and
+     endeavoured to draw my deductions from it. He said that he would
+     acquire no knowledge which did not bear upon his object. Therefore
+     all the knowledge which he possessed was such as would be useful to
+     him. I enumerated in my own mind all the various points upon which he
+     had shown me that he was exceptionally well-informed. I even took a
+     pencil and jotted them down. I could not help smiling at the document
+     when I had completed it. It ran in this way--
+
+     Sherlock Holmes--his limits.
+     
+     1. Knowledge of Literature.--Nil.
+     2. Philosophy.--Nil.
+     3. Astronomy.--Nil.
+     4. Politics.--Feeble.
+     5. Botany.--Variable. Well up in belladonna, opium, and poisons
+     generally. Knows nothing of practical gardening.
+     6. Geology.--Practical, but limited. Tells at a glance different
+     soils from each other. After walks has shown me splashes upon his
+     trousers, and told me by their colour and consistence in what part of
+     London he had received them.
+     7. Chemistry.--Profound.
+     8. Anatomy.--Accurate, but unsystematic.
+     9. Sensational Literature.--Immense. He appears to know every detail
+     of every horror perpetrated in the century.
+     10. Plays the violin well.
+     11. Is an expert singlestick player, boxer, and swordsman.
+     12. Has a good practical knowledge of British law.
+
+    

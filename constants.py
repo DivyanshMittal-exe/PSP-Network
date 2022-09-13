@@ -1,4 +1,4 @@
-n = 5
+n = 10
 
 data_file = "Small.txt"
 localIP     = "127.0.0.1"
@@ -7,7 +7,8 @@ localIP     = "127.0.0.1"
 
 chunkSize  = 1024
 headerSize = 20
-bufferSize = chunkSize + headerSize
+delimSize = 1
+bufferSize = chunkSize + headerSize + delimSize
 
 data_for_chunk_count =  ""
 # Here read as binary as non utf-8
@@ -30,7 +31,7 @@ req_chunk = "Req_Chunk"
 
 
 
-port   = 24520
+port   = 25700
 
 server_tcp = port
 port += 1

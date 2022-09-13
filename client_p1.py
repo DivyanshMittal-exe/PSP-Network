@@ -3,6 +3,7 @@ from constants import *
 import socket
 from LRU import  LRU
 import threading
+
 from socket_func import *
 
 
@@ -21,6 +22,8 @@ def make_client(index):
     data_with_me = ["" for _ in range(chunk_count)]
 
     TCPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
+    TCPSocket.settimeout(5)
+    
     TCPSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     # TCPSocket.setsockopt(
     #     socket.SOL_SOCKET, socket.SO_RCVLOWAT, bufferSize
@@ -86,10 +89,13 @@ def make_client(index):
                 
             if not sent_once:
                 print(f"Sending {msg_to_send}")
-                send_data(UDPSocket,server_udp_ports[index],msg_to_send)
-
-            if end_message in msg_to_send:
-                sent_once = True
+                if end_message in msg_to_send:
+                    for udp_port in server_udp_ports:
+                        send_data(UDPSocket,udp_port,msg_to_send)
+                        sent_once = True
+                else:
+                    send_data(UDPSocket,server_udp_ports[index],msg_to_send)
+                
             
         elif end_message in message:
             break
@@ -106,6 +112,20 @@ def make_client(index):
                 sent_once = True
         else:
             print(f"Yeh konsa packet aagya {message} {id}")
+            
+    # tot = "".join(data_with_me)
+    hash = hashlib.md5("".join(data_with_me).encode()).hexdigest()
+
+
+    print(hash)
+    
+    # print(len(data_with_me))
+    # for chunk in data_with_me:
+    #     # chunl
+    #     print(len(chunk)) 
+
+    
+    
         
         
 

@@ -5,6 +5,8 @@ import socket
 from LRU import  LRU
 import threading
 
+
+
 from socket_func import *
 
 # from good_tcp import good_tcp
@@ -25,7 +27,7 @@ with open(data_file, 'r') as f:
         if not chunk: 
             break
         
-        chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8').ljust(chunkSize)
+        chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8')
         
         # if len(chunk) < chunkSize:
         #     chunk.ljust(chunkSize)
@@ -52,6 +54,7 @@ TCP_Clients = []
 # TCP_Ports = []
 
 TCPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
+TCPServerSocket.settimeout(5)
 TCPServerSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 TCPServerSocket.bind((localIP, server_tcp)) 
 TCPServerSocket.listen(n)       
@@ -144,6 +147,12 @@ def make_server_t(index):
                 break
         else:
             print(f"Yeh konsa packet aagya {message} {id}")
+            
+    hash = hashlib.md5("".join(data).encode()).hexdigest()
+
+    print(hash)
+    
+    # print("".join(data))
     
     
 ts = []
@@ -155,3 +164,5 @@ for i in range(n):
     
 for t in ts:
     t.join()
+    
+    

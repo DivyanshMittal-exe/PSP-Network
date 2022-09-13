@@ -4,35 +4,40 @@ import sys
 import socket
 
 def send_chunk(TCPSocket,chunk_id , chunk):
-    message = (str(chunk_id).ljust(headerSize) + chunk).ljust(bufferSize)
+    last_char = chunk[-1]
+    last_char = chr(ord(last_char) + 1)
+    message = (str(chunk_id).ljust(headerSize) + chunk).ljust(bufferSize, last_char)
     TCPSocket.send(message.encode())
 
 
 def get_chunk(sock ,blocking = False,time_out = 10):
 
-    
-    # sock.setblocking(blocking)
-    
-    # if not blocking:
-    #     sock.settimeout(time_out)
+    try:   
+        chunk = ""
+        chunk_id = -1
         
+        # try:
+        packet = ""
+        len_left = bufferSize - len(packet)    
+        while len_left != 0:
+            message = sock.recv(len_left).decode('utf-8','ignore')
+            packet += message
+            len_left = bufferSize - len(packet)
+        
+        
+        chunk_id = int(packet[:headerSize])
+        chunk = packet[headerSize:]
+        
+        chunk = chunk.rstrip(packet[-1])
+        return chunk_id,chunk
+    except socket.timeout as e:
+        print("TCP Timed OUT")
+        return -1,""
+    finally:
+        sys.exit(1)
     
-    chunk = ""
-    chunk_id = -1
-    
-    # try:
-    packet = ""
-    len_left = bufferSize - len(packet)    
-    while len_left != 0:
-        message = sock.recv(len_left).decode('utf-8','ignore')
-        packet += message
-        len_left = bufferSize - len(packet)
     
     
-    chunk_id = int(packet[:headerSize])
-    chunk = packet[headerSize:]
-    
-    return chunk_id,chunk
         
     # except socket.timeout:
     #     print("No packet Recieved, Timed out")
