@@ -25,13 +25,16 @@ with open(data_file, 'r') as f:
         if not chunk: 
             break
         
-        chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8')
+        chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8').ljust(chunkSize)
         
         # if len(chunk) < chunkSize:
         #     chunk.ljust(chunkSize)
         
         data.append(chunk)
 
+print(len(data))
+for chunk in data:
+    print(len(chunk)) 
 
 cache = LRU()
 
@@ -62,7 +65,6 @@ while len(TCP_Clients) < n:
 print(TCP_Clients[0].getsockname())
     
 TCP_Clients = sorted(TCP_Clients, key=lambda x: x.getsockname()[1])
-# print()
 
 
 print("Hello")
@@ -97,50 +99,49 @@ def make_server_t(index):
 
     
     while True:    
-        message, id , udp_data_port = get_data(UDPSocket)
+        message, id = get_data(UDPSocket)
         print(f"I got {message} {id}")
         
 
         if req_chunk in message:
+            haveSent = False
             with lock:
                 cache_message = cache.get(id)
                 if cache_message  == "":
                     for udp_port in udp_client_ports:
-                        print(req_chunk + " " + str(id))
-                        send_data(UDPSocket,udp_port, req_chunk + " " + str(id) + " " + str(index))
-                        message, id , port_with_data = get_data(UDPSocket)
-
-                        if giving_chunk in message:
-                            chunk_id, chunk = get_chunk(TCP_Clients[port_with_data])      
-                            if chunk != "":
-                                cache.put(chunk_id,chunk)
-
-                                send_data(UDPSocket,udp_port, giving_chunk)
-                                send_chunk(myTCP,chunk_id,chunk)
-                            
+                        if udp_port != udp_client_ports[index]:
+                            print(req_chunk + " " + str(id))
+                            send_data(UDPSocket,udp_port, req_chunk + " " + str(id))
                 else:
-                    send_data(UDPSocket,udp_port, giving_chunk)
+                    haveSent = True
+                    print(f"Able to sen from cache {id} {cache_message[0:10]}")
+                    send_data(UDPSocket,udp_client_ports[index], giving_chunk)
                     send_chunk(myTCP,id,cache_message)
             
-            # with lock:
-            #     cache_message = cache.get(id)
-            #     if cache_message  != "":
-            #         print(f"Able to Send {id} {cache_message[0:10]}")
-            #         send_data(UDPSocket,udp_port, giving_chunk)
-            #         send_chunk(myTCP,id,cache_message)
+            if not haveSent:
+                with lock:
+                    cache_message = cache.get(id)
+                    if cache_message  != "":
+                        print(f"Able to Send {id} {cache_message[0:10]}")
+                        send_data(UDPSocket,udp_client_ports[index], giving_chunk)
+                        send_chunk(myTCP,id,cache_message)
             
         elif giving_chunk in message:
             with lock:
-                chunk_id, chunk = get_chunk(TCP_Clients[udp_data_port])      
+                chunk_id, chunk = get_chunk(myTCP)   
+                print(f"Got chunk {chunk[0:10]}")   
                 if chunk != "":
                         cache.put(chunk_id,chunk)
         elif end_message in message:
             is_everyone_satisfied[id] = True
+            print(f"{index} says {is_everyone_satisfied} ")
             if all(is_everyone_satisfied):
                 send_data(UDPSocket,udp_client_ports[index],f"{end_message} {index}")
                 break
         elif skip_mesaage in message:
-            pass
+            if all(is_everyone_satisfied):
+                send_data(UDPSocket,udp_client_ports[index],f"{end_message} {index}")
+                break
         else:
             print(f"Yeh konsa packet aagya {message} {id}")
     

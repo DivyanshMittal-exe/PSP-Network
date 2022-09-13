@@ -61,13 +61,8 @@ def get_data(UDPSocket ,blocking = False,time_out = 1):
     except:
         server_message = skip_mesaage
     
-    if req_chunk in server_message:
-        m, id , port =  server_message.split()
-        return m, int(id), int(port)
-        
-    
-    if end_message in server_message:
+    if req_chunk in server_message or end_message in server_message:
         m, id =  server_message.split()
-        return m, int(id),0
+        return m, int(id)
 
-    return server_message,0,0
+    return server_message,0
