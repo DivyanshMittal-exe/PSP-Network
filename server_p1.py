@@ -20,27 +20,30 @@ import hashlib
 lock = threading.Lock()
 
 data =  []
-with open(data_file, 'r') as f:
+with open(data_file, 'rb') as f:
     while True:
         chunk = f.read(chunkSize)
         
         if not chunk: 
             break
         
-        chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8')
+        # chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8')
+        
+        chunk = chunk.decode('utf-8', errors= 'ignore')
         
         # if len(chunk) < chunkSize:
         #     chunk.ljust(chunkSize)
         
         data.append(chunk)
 
-print(len(data))
-for chunk in data:
-    print(len(chunk)) 
+# print(len(data))
+# for chunk in data:
+#     print(len(chunk)) 
 
 cache = LRU()
 
 hash = hashlib.md5("".join(data).encode()).hexdigest()
+# hash = hashlib.md5("".join(data).encode()).hexdigest()
 
 print(hash)
 
@@ -54,7 +57,7 @@ TCP_Clients = []
 # TCP_Ports = []
 
 TCPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
-TCPServerSocket.settimeout(5)
+# TCPServerSocket.settimeout(5)
 TCPServerSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 TCPServerSocket.bind((localIP, server_tcp)) 
 TCPServerSocket.listen(n)       
@@ -65,7 +68,7 @@ while len(TCP_Clients) < n:
     connectionSocket, addr = TCPServerSocket.accept()
     TCP_Clients.append(connectionSocket)
 
-print(TCP_Clients[0].getsockname())
+# print(TCP_Clients[0].getsockname())
     
 TCP_Clients = sorted(TCP_Clients, key=lambda x: x.getsockname()[1])
 
@@ -81,7 +84,7 @@ def make_server_t(index):
     
     is_everyone_satisfied = [False for i in range(n)]
     
-    print("Hello")
+    # print("Hello")
     
 
     myTCP = TCP_Clients[index]
@@ -90,7 +93,7 @@ def make_server_t(index):
     # ServerTCP = good_tcp(0,TCPServerSocket,TCP_Clients[i])
     # ServerUDP = good_udp(server_udp_ports[index])
     
-    print("Hello")
+    # print("Hello")
     
     for id in index_to_split_chunk[index]:
         send_chunk(myTCP,id,data[id])
@@ -103,7 +106,7 @@ def make_server_t(index):
     
     while True:    
         message, id = get_data(UDPSocket)
-        print(f"I got {message} {id}")
+        # print(f"I got {message} {id}")
         
 
         if req_chunk in message:
@@ -113,7 +116,7 @@ def make_server_t(index):
                 if cache_message  == "":
                     for udp_port in udp_client_ports:
                         if udp_port != udp_client_ports[index]:
-                            print(req_chunk + " " + str(id))
+                            # print(req_chunk + " " + str(id))
                             send_data(UDPSocket,udp_port, req_chunk + " " + str(id))
                 else:
                     haveSent = True
@@ -145,6 +148,10 @@ def make_server_t(index):
             if all(is_everyone_satisfied):
                 send_data(UDPSocket,udp_client_ports[index],f"{end_message} {index}")
                 break
+        elif exp_message in message:
+            for udp_port in udp_client_ports:
+                        
+                send_data(UDPSocket,udp_port, exp_message)
         else:
             print(f"Yeh konsa packet aagya {message} {id}")
             

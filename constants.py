@@ -1,18 +1,18 @@
-n = 10
+n = 20
 
-data_file = "Small.txt"
+data_file = "A2_small_file.txt"
 localIP     = "127.0.0.1"
 # 
 # bufferSize = chunkSize = 1024
 
 chunkSize  = 1024
 headerSize = 20
-delimSize = 1
-bufferSize = chunkSize + headerSize + delimSize
+delimSize = 0
+bufferSize = chunkSize + headerSize
 
 data_for_chunk_count =  ""
 # Here read as binary as non utf-8
-with open(data_file, 'r', encoding='utf-8') as f:
+with open(data_file, 'rb') as f:
     data_for_chunk_count = f.read()
 
 chunk_count = len(data_for_chunk_count) //chunkSize
@@ -29,9 +29,10 @@ giving_chunk = "SendingChunk"
 skip_mesaage = "Skip_Message"
 req_chunk = "Req_Chunk"
 
+exp_message = "Packet_Exp"
 
 
-port   = 25700
+port   = 10000
 
 server_tcp = port
 port += 1

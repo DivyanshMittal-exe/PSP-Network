@@ -2,14 +2,14 @@ import socket
 import sys
 from constants import *
 
-def getTCPmessage(TCPSocket):
+def getTCPmessage(TCPSocket,size_want):
     packet = ""
-    len_left = bufferSize - len(packet)
+    len_left = size_want - len(packet)
     
     while len_left != 0:
         message = TCPSocket.recv(len_left).decode('utf-8','ignore')
         packet += message
-        len_left = bufferSize - len(packet)
+        len_left = size_want - len(packet)
     
         
     return packet
@@ -53,7 +53,9 @@ class good_tcp:
         # pass
     
     def send_chunk(self,chunk_id , chunk):
-        message = (str(chunk_id).ljust(headerSize) + chunk).ljust(bufferSize)
+        chunk = chunk.encode()
+        header_msg = f"{chunk_id} {len(chunk)}"
+        message = (header_msg.ljust(headerSize) + chunk)
         if self.connectionSocket:
             self.connectionSocket.send(message.encode())
         else:
@@ -74,16 +76,21 @@ class good_tcp:
         chunk_id = -1
         
         try:
-            packet = ""
-            len_left = bufferSize - len(packet)    
-            while len_left != 0:
-                message = sock.recv(len_left).decode('utf-8','ignore')
-                packet += message
-                len_left = bufferSize - len(packet)
+            initial_header = getTCPmessage(sock,headerSize)
+            chunk_id,chunk_len = initial_header.split()
+            chunk_id,chunk_len = int(chunk_id),int(chunk_len)
+            
+            chunk = getTCPmessage(sock,chunk_len)
+            # packet = ""
+            # len_left = bufferSize - len(packet)    
+            # while len_left != 0:
+            #     message = sock.recv(len_left).decode('utf-8','ignore')
+            #     packet += message
+            #     len_left = bufferSize - len(packet)
             
             
-            chunk_id = int(packet[:headerSize])
-            chunk = packet[headerSize:]
+            # chunk_id = int(packet[:headerSize])
+            # chunk = packet[headerSize:]
             
             return chunk_id,chunk
             
