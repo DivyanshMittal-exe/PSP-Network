@@ -5,13 +5,15 @@ import socket
 from LRU import  LRU
 import threading
 
-
+import random
 
 from socket_func import *
 
 # from good_tcp import good_tcp
 
 import hashlib
+
+
 
 # from good_udp import good_udp
 
@@ -29,7 +31,7 @@ with open(data_file, 'rb') as f:
         
         # chunk  = chunk.encode('utf-8', errors='ignore').decode('utf-8')
         
-        chunk = chunk.decode('utf-8', errors= 'ignore')
+        chunk = chunk.decode('utf-8-sig', errors= 'ignore')
         
         # if len(chunk) < chunkSize:
         #     chunk.ljust(chunkSize)
@@ -47,7 +49,12 @@ hash = hashlib.md5("".join(data).encode()).hexdigest()
 
 print(hash)
 
-index_to_split_chunk = np.array_split(np.arange(len(data)), n)
+
+oneton = np.arange(len(data))
+np.random.shuffle(oneton)
+
+
+index_to_split_chunk = np.array_split(oneton, n)
 
 # for i in range()
 
@@ -106,7 +113,7 @@ def make_server_t(index):
     
     while True:    
         message, id = get_data(UDPSocket)
-        # print(f"I got {message} {id}")
+        print(f"I got {message} {id}")
         
 
         if req_chunk in message:
@@ -114,9 +121,10 @@ def make_server_t(index):
             with lock:
                 cache_message = cache.get(id)
                 if cache_message  == "":
+                    print(req_chunk + " " + str(id))
                     for udp_port in udp_client_ports:
                         if udp_port != udp_client_ports[index]:
-                            # print(req_chunk + " " + str(id))
+                            
                             send_data(UDPSocket,udp_port, req_chunk + " " + str(id))
                 else:
                     haveSent = True
@@ -149,9 +157,12 @@ def make_server_t(index):
                 send_data(UDPSocket,udp_client_ports[index],f"{end_message} {index}")
                 break
         elif exp_message in message:
-            for udp_port in udp_client_ports:
+                print(f" Client {index} did nothing ")
+                
+                # send_data(UDPSocket,udp_client_ports[index],exp_message)
+            # for udp_port in udp_client_ports:
                         
-                send_data(UDPSocket,udp_port, exp_message)
+            #     send_data(UDPSocket,udp_port, exp_message)
         else:
             print(f"Yeh konsa packet aagya {message} {id}")
             

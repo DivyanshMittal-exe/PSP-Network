@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from constants import *
 import sys
 import socket
@@ -100,7 +101,7 @@ def get_chunk(sock ,blocking = False,time_out = 10):
 def send_data(UDPSocket,destination_port,data):
         UDPSocket.sendto(data.encode(), (localIP, destination_port))
 
-def get_data(UDPSocket ,blocking = False,time_out = 1):
+def get_data(UDPSocket ,blocking = False,time_out = 2):
     UDPSocket.setblocking(blocking)
     
     if not blocking:
@@ -110,7 +111,8 @@ def get_data(UDPSocket ,blocking = False,time_out = 1):
         server_message = UDPSocket.recvfrom(bufferSize)[0].decode()
     except:
         server_message = exp_message
-    
+        print("Timed out")
+        
     if req_chunk in server_message or end_message in server_message:
         m, id =  server_message.split()
         return m, int(id)

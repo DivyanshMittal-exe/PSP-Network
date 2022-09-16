@@ -4,6 +4,8 @@ import socket
 from LRU import  LRU
 import threading
 
+import random
+
 from socket_func import *
 
 
@@ -63,7 +65,7 @@ def make_client(index):
 
         message, id = get_data(UDPSocket)
         
-        # print(f"Got back {message} {id}")
+        print(f"Got back {message} {id}")
         
         
         if req_chunk in message:
@@ -103,20 +105,49 @@ def make_client(index):
             
         elif end_message in message:
             break
-        elif skip_mesaage in message or exp_message in message:
+        elif skip_mesaage in message:
+            
+
+                
             
             if len(chunks_not_with_me)!= 0 :
                 req_for = chunks_not_with_me[0]
                 msg_to_send = f"{req_chunk} {req_for}"
+                print(f"{msg_to_send}")
                 
             # if not sent_once:
                 # print(f"Sending {msg_to_send}")
+            # if exp_message in message:
+                # print(f"Server asked me {index} to do something I send {msg_to_send}")
+                # print(f"Server asked me {index} to do something I send {msg_to_send} I don't have {chunks_not_with_me}")
+                
             send_data(UDPSocket,server_udp_ports[index],msg_to_send)
 
             if end_message in msg_to_send:
                 for udp_port in server_udp_ports:
                         send_data(UDPSocket,udp_port,msg_to_send)
                         sent_once = True
+        
+        elif exp_message in message:
+            
+            if len(chunks_not_with_me)!= 0 :
+                req_for = random.choice(chunks_not_with_me)
+                msg_to_send = f"{req_chunk} {req_for}"
+                # print(f"{msg_to_send}")
+                
+            # if not sent_once:
+                # print(f"Sending {msg_to_send}")
+            # if exp_message in message:
+                print(f"Server asked me {index} to do something I send {msg_to_send}")
+                # print(f"Server asked me {index} to do something I send {msg_to_send} I don't have {chunks_not_with_me}")
+                
+            send_data(UDPSocket,server_udp_ports[index],msg_to_send)
+
+            if end_message in msg_to_send:
+                for udp_port in server_udp_ports:
+                        send_data(UDPSocket,udp_port,msg_to_send)
+                        sent_once = True
+        
         else:
             print(f"Yeh konsa packet aagya {message} {id}")
             

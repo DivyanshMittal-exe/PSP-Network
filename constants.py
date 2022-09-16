@@ -1,4 +1,4 @@
-n = 20
+n = 60
 
 data_file = "A2_small_file.txt"
 localIP     = "127.0.0.1"
@@ -32,7 +32,7 @@ req_chunk = "Req_Chunk"
 exp_message = "Packet_Exp"
 
 
-port   = 10000
+port   = 17000
 
 server_tcp = port
 port += 1
