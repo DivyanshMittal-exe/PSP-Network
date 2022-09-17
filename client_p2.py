@@ -1,9 +1,12 @@
+from re import T
 from constants import *
 import socket
 from LRU import  LRU
 import threading
-from socket_func import *
+
+from sock_func_p2 import *
 import hashlib
+import time
 
 import random
 
@@ -25,14 +28,13 @@ class Client:
         
         self.TCPSocket.settimeout(10)
         
-        self.sent_once = False
         
         self.UDPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         self.UDPSocket.bind((localIP,udp_client_ports[index]))
         
     def get_init_data(self):
         while True:
-            id, chunk = get_chunk(self.TCPSocket)
+            id, chunk = get_chunk(self.UDPSocket)
 
             if id == -2:
                 break
@@ -43,46 +45,41 @@ class Client:
         print(f"Got initial Chunks to {self.index} {chunk_count - len(self.chunks_not_with_me)}")
     
     def client_fetch(self):
-            while True:
-                
-                # pbar.refresh()
-                
-                msg_to_send = f"{end_message} {self.index}"
+        while True:
+                            
+            msg_to_send = f"{end_message} {self.index}"
+        
+            if len(self.chunks_not_with_me)!= 0 :
+                req_for = random.choice(self.chunks_not_with_me[:min(len(self.chunks_not_with_me), n//2)])
+                msg_to_send = f"{req_chunk} {req_for}"
             
-                if len(self.chunks_not_with_me)!= 0 :
-                    # req_for = self.chunks_not_with_me[0]
-                    req_for = random.choice(self.chunks_not_with_me[:min(len(self.chunks_not_with_me), n//2)])
+            send_data(self.TCPSocket,msg_to_send)
+        
+            if end_message in msg_to_send:
+                time.sleep(1)
+                    
                 
-                    msg_to_send = f"{req_chunk} {req_for}"
-                
-                if not self.sent_once :
-                    send_data(self.UDPSocket,server_udp_ports[self.index],msg_to_send)
-                
-                    if end_message in msg_to_send:
-                        self.sent_once  = True
-                        
-                chunk_id, chunk = get_chunk(self.TCPSocket, True)      
-                
-                if chunk_id == -2:
-                    break
-                elif chunk_id == -1:
-                    pass
-                elif chunk == "":
-                    print("Kuch nhi aaya")
-                elif chunk_id in self.chunks_not_with_me:
-                    print(f"Got {chunk_id}: {chunk[:5]}")
-                    self.data_with_me[chunk_id] = chunk
-                    self.chunks_not_with_me.remove(chunk_id)
+            chunk_id, chunk = get_chunk(self.TCPSocket, True)      
+            
+            if chunk_id == -2:
+                break
+            elif chunk_id == -1:
+                pass
+            elif chunk == "":
+                print("Kuch nhi aaya")
+            elif chunk_id in self.chunks_not_with_me:
+                print(f"Got {chunk_id}: {chunk[:5]}")
+                self.data_with_me[chunk_id] = chunk
+                self.chunks_not_with_me.remove(chunk_id)
 
     def client_send(self):
         while True:
-            message, id = get_data(self.UDPSocket)
+            message, id = get_data(self.TCPSocket)
+            
             if req_chunk in message:
-                if id in self.chunks_not_with_me:
-                    send_data(self.UDPSocket,server_udp_ports[self.index],skip_mesaage)
-                else:                        
-                    send_data(self.UDPSocket,server_udp_ports[self.index],giving_chunk)
-                    send_chunk(self.TCPSocket,id,self.data_with_me[id])
+                if id not in self.chunks_not_with_me:           
+                    send_data(self.TCPSocket,giving_chunk)
+                    send_chunk(self.UDPSocket,server_udp_ports[self.index],id,self.data_with_me[id])
              
             elif end_message in message:
                 

@@ -26,7 +26,6 @@ class Client:
         
         self.TCPSocket.settimeout(10)
         
-        self.sent_once = False
         
         self.UDPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         self.UDPSocket.bind((localIP,udp_client_ports[index]))
@@ -46,26 +45,22 @@ class Client:
     def client_fetch(self):
             while True:
                 
-                # pbar.refresh()
                 
                 msg_to_send = f"{end_message} {self.index}"
             
                 if len(self.chunks_not_with_me)!= 0 :
-                    # req_for = self.chunks_not_with_me[0]
                     req_for = random.choice(self.chunks_not_with_me[:min(len(self.chunks_not_with_me), n//2)])
                 
                     msg_to_send = f"{req_chunk} {req_for}"
                 
-                if not self.sent_once :
-                    send_data(self.UDPSocket,server_udp_ports[self.index],msg_to_send)
-                
-                    if end_message in msg_to_send:
-                        time.sleep(1)
-                        # self.sent_once  = True
+                send_data(self.UDPSocket,server_udp_ports[self.index],msg_to_send)
+            
+                if end_message in msg_to_send:
+                    time.sleep(1)
                 
                 
                         
-                chunk_id, chunk = get_chunk(self.TCPSocket, True)      
+                chunk_id, chunk = get_chunk(self.TCPSocket, False)      
                 
                 if chunk_id == -2:
                     break
@@ -95,8 +90,8 @@ class Client:
                     self.TCPSocket.shutdown(socket.SHUT_RDWR)
                     self.TCPSocket.close()           
 
-                    hash = hashlib.md5("".join(self.data_with_me).encode()).hexdigest()
-                    print(hash)
+                    hash = hashlib.md5(b"".join(self.data_with_me)).hexdigest()
+                    print(f"Hash of file recieved:{hash}")
                     break
                     
    

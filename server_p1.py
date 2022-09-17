@@ -24,7 +24,7 @@ with open(data_file, 'rb') as f:
         if not chunk: 
             break
         
-        chunk = chunk.decode('utf-8-sig', errors= 'ignore')
+        # chunk = chunk.decode('utf-8-sig')
         
         data.append(chunk)
 
@@ -32,7 +32,7 @@ with open(data_file, 'rb') as f:
 
 cache = LRU()
 
-hash = hashlib.md5("".join(data).encode()).hexdigest()
+hash = hashlib.md5(b"".join(data)).hexdigest()
 
 
 print(hash)
@@ -46,9 +46,6 @@ index_to_split_chunk = np.array_split(oneton, n)
 is_everyone_done = [False]*n
 is_everyone_done_count = 0
 
-# for i in range()
-
-# ServerTcps = [good_tcp(port) for port in server_tcp_ports]
 
 TCP_Clients = []
 
@@ -78,9 +75,6 @@ def make_server_t(index):
     global is_everyone_done_count
     global lock
     
-    # is_everyone_satisfied = [False for i in range(n)]
-    
-    # print("Hello")
     
 
     myTCP = TCP_Clients[index]
@@ -91,7 +85,7 @@ def make_server_t(index):
     for id in index_to_split_chunk[index]:
         send_chunk(myTCP,id,data[id])
     
-    send_chunk(myTCP,-2,end_message)
+    send_chunk(myTCP,-2,end_message.encode())
     
     print(f"Sent initial Chunks to {index}: {len(index_to_split_chunk[index])}")
 
@@ -100,7 +94,6 @@ def make_server_t(index):
         if is_everyone_done_count == n:
             send_data(UDPSocket,udp_client_ports[index],f"{end_message} {index}")
             break
-        
         
         
         message, id = get_data(UDPSocket)
@@ -150,9 +143,9 @@ def make_server_t(index):
         else:
             print(f"Yeh konsa packet aagya {message} {id}")
             
-    hash = hashlib.md5("".join(data).encode()).hexdigest()
+    hash = hashlib.md5(b"".join(data)).hexdigest()
 
-    print(hash)
+    print(f"Hash of file sent:{hash}")
     
     # print("".join(data))
     

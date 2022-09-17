@@ -20,32 +20,67 @@ def getTCPmessage(TCPSocket,size_want):
         
     return packet.decode()
 
-def send_chunk(TCPSocket,chunk_id , chunk):
+def send_data(TCPSocket,data):
+    
+    print(data)
+    data = data.ljust(headerSize)
+    print(f"After Ljust {data}")
+    
+    # chunk = chunk.encode()
+    # header_msg = f"{chunk_id} {len(chunk)}"
+    # header_msg = header_msg.ljust(headerSize).encode()
+    
+    # TCPSocket.send(header_msg)
+    
+    # message =  chunk
+
+    TCPSocket.send(data.encode())
+
+
+def get_data(sock ,blocking = False,time_out = 1):
+
+
+    try:
+        sock.settimeout(time_out) 
+        server_message = getTCPmessage(sock,headerSize)
+        print(server_message)
+    except:
+        server_message = exp_message
+        
+    if req_chunk in server_message or end_message in server_message:
+        m, id =  server_message.split()
+        print(f"{m} {id}")
+        return m, int(id)
+
+    return server_message.strip(),0
+
+def send_chunk(UDPSocket,destination_port,chunk_id , chunk):
     
     chunk = chunk.encode()
     header_msg = f"{chunk_id} {len(chunk)}"
     header_msg = header_msg.ljust(headerSize).encode()
     
-    TCPSocket.send(header_msg)
+    UDPSocket.sendto(header_msg, (localIP, destination_port))
     
     message =  chunk
+    
+    UDPSocket.sendto(message, (localIP, destination_port))
 
-        
-    TCPSocket.send(message)
-
-
-def get_chunk(sock ,blocking = False,time_out = 0.1):
-
+def get_chunk(UDPSocket ,blocking = False,time_out = 0.1):
+    UDPSocket.setblocking(blocking)
+    
+    if not blocking:
+        UDPSocket.settimeout(time_out)
+    
     chunk_id = -1
     chunk = ""
     try:
-        sock.settimeout(time_out) 
-        initial_header = getTCPmessage(sock,headerSize)
+        initial_header = UDPSocket.recvfrom(headerSize)[0].decode()
         
         chunk_id,chunk_len = initial_header.split()
         chunk_id,chunk_len = int(chunk_id),int(chunk_len)
         
-        chunk = getTCPmessage(sock,chunk_len)
+        chunk = UDPSocket.recvfrom(chunk_len)[0].decode()
     except socket.timeout:
         pass
         # print("It timed out")
@@ -61,15 +96,29 @@ def get_chunk(sock ,blocking = False,time_out = 0.1):
 
     
     return chunk_id,chunk
-
-def send_data(UDPSocket,destination_port,data):
-        UDPSocket.sendto(data.encode(), (localIP, destination_port))
-
-def get_data(UDPSocket ,blocking = False,time_out = 0.1):
-    UDPSocket.setblocking(blocking)
     
-    if not blocking:
-        UDPSocket.settimeout(time_out)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     try:
         server_message = UDPSocket.recvfrom(bufferSize)[0].decode()

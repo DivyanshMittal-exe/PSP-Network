@@ -18,11 +18,11 @@ def getTCPmessage(TCPSocket,size_want):
         len_left = size_want - len(packet)
     
         
-    return packet.decode()
+    return packet
 
 def send_chunk(TCPSocket,chunk_id , chunk):
     
-    chunk = chunk.encode()
+    # chunk = chunk.encode()
     header_msg = f"{chunk_id} {len(chunk)}"
     header_msg = header_msg.ljust(headerSize).encode()
     
@@ -40,7 +40,7 @@ def get_chunk(sock ,blocking = False,time_out = 0.1):
     chunk = ""
     try:
         sock.settimeout(time_out) 
-        initial_header = getTCPmessage(sock,headerSize)
+        initial_header = getTCPmessage(sock,headerSize).decode()
         
         chunk_id,chunk_len = initial_header.split()
         chunk_id,chunk_len = int(chunk_id),int(chunk_len)

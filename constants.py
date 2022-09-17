@@ -7,7 +7,7 @@ localIP     = "127.0.0.1"
 
 
 chunkSize  = 1024
-headerSize = 20
+headerSize = 40
 delimSize = 0
 bufferSize = chunkSize + headerSize
 
@@ -25,15 +25,15 @@ if  len(data_for_chunk_count)  % chunkSize != 0:
 del data_for_chunk_count
 
 
-end_message = "Done_quitting"
-giving_chunk = "SendingChunk"
-skip_mesaage = "Skip_Message"
-req_chunk = "Req_Chunk"
+end_message = "Done_quit"
+giving_chunk = "SendigChun"
+skip_mesaage = "Skip_Mess"
+req_chunk = "Req_Chun"
 
-exp_message = "Packet_Exp"
+exp_message = "Pack_Exp"
 
 
-port   = 10130
+port   = 10680
 
 server_tcp = port
 port += 1
