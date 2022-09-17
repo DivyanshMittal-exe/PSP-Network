@@ -7,7 +7,7 @@ class LRU:
     cache = []
     max_chunks = 1
     def __init__(self):
-        self.max_chunks = n
+        self.max_chunks = cache_size
     
     def get(self,index):
         # print(f"Cache State is: {self.cache}")

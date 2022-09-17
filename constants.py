@@ -1,9 +1,10 @@
 n = 5
+cache_size = n
 
 data_file = "A2_small_file.txt"
 localIP     = "127.0.0.1"
-# 
-# bufferSize = chunkSize = 1024
+
+
 
 chunkSize  = 1024
 headerSize = 20
@@ -32,13 +33,11 @@ req_chunk = "Req_Chunk"
 exp_message = "Packet_Exp"
 
 
-port   = 45000
+port   = 10130
 
 server_tcp = port
 port += 1
 
-# server_tcp_ports = [i for i in range(port,port + n)]
-# port += n
 
 server_udp_ports = [i for i in range(port,port + n)]
 port += n
@@ -49,9 +48,3 @@ port += n
 udp_client_ports = [i for i in range(port,port + n)]
 port += n
 
-
-
-
-# chunk_addr_h = 10
-# chunK_len_h = 10
-# bufferSize = chunkSize + chunk_addr_h + chunK_len_h
