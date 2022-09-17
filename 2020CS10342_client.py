@@ -1,4 +1,3 @@
-from re import T
 from constants import *
 import socket
 from LRU import  LRU
@@ -7,7 +6,7 @@ from socket_function_part_1 import *
 import hashlib
 import random
 import time
-# from tqdm import tqdm
+from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 import time
 from statistics import mean
@@ -36,7 +35,7 @@ class Client:
         
         # self.RTTS = []
         
-        # self.p_bar = tqdm(range(chunk_count),leave=False,desc=f"Client {index}",unit="Chunks",colour="#00ff00")
+        self.p_bar = tqdm(range(chunk_count),leave=True,desc=f"Client {index}",unit="Chunks",colour="#00ff00")
         self.UDPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         self.UDPSocket.bind((localIP,udp_client_ports[index]))
         self.UDPSocket_server = server_udp_ports[index]
@@ -46,7 +45,7 @@ class Client:
             id, chunk = get_chunk(self.TCPSocket)
             if id == -2:
                 break
-            # self.p_bar.update(1)
+            self.p_bar.update(1)
             
             self.data_with_me[id] = chunk
             self.chunks_not_with_me.remove(id)
@@ -77,7 +76,7 @@ class Client:
                 #DEBUG print("Kuch nhi aaya")
             elif chunk_id in self.chunks_not_with_me:
                 #DEBUG print(f"Got {chunk_id}: {chunk[:5]}")
-                # self.p_bar.update(1)
+                self.p_bar.update(1)
                 
                 self.data_with_me[chunk_id] = chunk
                 self.chunks_not_with_me.remove(chunk_id)
@@ -111,8 +110,7 @@ clients = [Client(i) for i in range(n)]
 for client in clients:             
     client.get_init_data()
     
-
-
+start = time.time()
 
 ts = []
 
@@ -129,8 +127,13 @@ for i,client in enumerate(clients):
     
 for t in ts:
     t.join()
+    
 
-        
+
+end = time.time()
+
+with open("Large_time_p1.txt",'a') as f:
+    f.write(f"{n}, {end-start}\n")
 
 
 

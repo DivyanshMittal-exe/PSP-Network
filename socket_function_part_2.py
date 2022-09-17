@@ -29,7 +29,7 @@ def send_data(TCPSocket,data):
         print("Done Socket Closed")
 
 
-def get_data(sock ,blocking = False,time_out = 1):
+def get_data(sock ,blocking = False,time_out = 0.1):
 
 
     try:

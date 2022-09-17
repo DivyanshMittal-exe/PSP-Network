@@ -1,4 +1,4 @@
-n =10
+n = 5
 cache_size = n
 
 data_file = "A2_small_file.txt"
@@ -31,7 +31,7 @@ req_chunk = "Req_Chun"
 exp_message = "Pack_Exp"
 
 
-port   = 24980
+port   = 16060
 
 server_tcp = port
 port += 1

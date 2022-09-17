@@ -5,6 +5,8 @@ import socket
 from LRU import  LRU
 import threading
 
+from tqdm import tqdm
+
 from socket_function_part_2 import *
 import hashlib
 import time
@@ -33,6 +35,9 @@ class Client:
         
         self.am_i_done = False
         
+        self.p_bar = tqdm(range(chunk_count),leave=True,desc=f"Client {index}",unit="Chunks",colour="#00ff00")
+        
+        
         
         
         
@@ -47,6 +52,9 @@ class Client:
             if id == -2:
                 break
             
+            self.p_bar.update(1)
+            
+            print(id)
             self.data_with_me[id] = chunk
             self.chunks_not_with_me.remove(id)
             
@@ -63,7 +71,7 @@ class Client:
             send_data(self.TCPSocket,msg_to_send)
         
             if end_message in msg_to_send:
-                time.sleep(1)
+                time.sleep(3)
               
             # #DEBUG print(msg_to_send)      
                 
@@ -78,6 +86,7 @@ class Client:
                 #DEBUG print("Kuch nhi aaya")
             elif chunk_id in self.chunks_not_with_me:
                 #DEBUG print(f"Got {chunk_id}: {chunk[:5]}")
+                self.p_bar.update(1)
 
                 
                 self.data_with_me[chunk_id] = chunk
@@ -88,9 +97,9 @@ class Client:
             message, id = get_data(self.TCPSocket)
             
             if req_chunk in message:
-                if id not in self.chunks_not_with_me:           
-                    send_data(self.TCPSocket,giving_chunk)
-                    send_chunk(self.UDPSocket,server_udp_ports[self.index],id,self.data_with_me[id])
+                if id not in self.chunks_not_with_me:  
+                        send_data(self.TCPSocket,giving_chunk)
+                        send_chunk(self.UDPSocket,server_udp_ports[self.index],id,self.data_with_me[id])
              
             elif end_message in message:
                 
@@ -132,7 +141,7 @@ for t in ts:
 
 end = time.time()
 
-with open(data_file, "a") as f:
+with open("Part 2 Timing.txt", "a") as f:
     f.write(f"{n}, {end-start} \n")
 
 
