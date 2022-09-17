@@ -1,3 +1,4 @@
+from re import T
 from constants import *
 import socket
 from LRU import  LRU
@@ -26,6 +27,7 @@ class Client:
         
         self.TCPSocket.settimeout(10)
         
+        self.am_i_done = False
         
         self.UDPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         self.UDPSocket.bind((localIP,udp_client_ports[index]))
@@ -43,7 +45,7 @@ class Client:
         print(f"Got initial Chunks to {self.index} {chunk_count - len(self.chunks_not_with_me)}")
     
     def client_fetch(self):
-            while True:
+            while not self.am_i_done:
                 
                 
                 msg_to_send = f"{end_message} {self.index}"
@@ -86,12 +88,14 @@ class Client:
                     send_chunk(self.TCPSocket,id,self.data_with_me[id])
              
             elif end_message in message:
-                
+                    self.am_i_done = True
+                    
                     self.TCPSocket.shutdown(socket.SHUT_RDWR)
                     self.TCPSocket.close()           
 
                     hash = hashlib.md5(b"".join(self.data_with_me)).hexdigest()
-                    print(f"Hash of file recieved:{hash}")
+                    print(f"Client {self.index} says: Hash of file recieved:{hash}")
+
                     break
                     
    

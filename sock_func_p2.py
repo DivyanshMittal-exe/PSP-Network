@@ -1,5 +1,3 @@
-from operator import le
-from tkinter.tix import Tree
 from constants import *
 import sys
 import socket
@@ -22,19 +20,13 @@ def getTCPmessage(TCPSocket,size_want):
 
 def send_data(TCPSocket,data):
     
-    print(data)
-    data = data.ljust(headerSize)
-    print(f"After Ljust {data}")
-    
-    # chunk = chunk.encode()
-    # header_msg = f"{chunk_id} {len(chunk)}"
-    # header_msg = header_msg.ljust(headerSize).encode()
-    
-    # TCPSocket.send(header_msg)
-    
-    # message =  chunk
+    # print(data)
+    try:
+        data = data.ljust(headerSize)
 
-    TCPSocket.send(data.encode())
+        TCPSocket.send(data.encode())
+    except:
+        print("Done Socket Closed")
 
 
 def get_data(sock ,blocking = False,time_out = 1):
@@ -43,28 +35,28 @@ def get_data(sock ,blocking = False,time_out = 1):
     try:
         sock.settimeout(time_out) 
         server_message = getTCPmessage(sock,headerSize)
-        print(server_message)
+        # print(server_message)
     except:
         server_message = exp_message
         
     if req_chunk in server_message or end_message in server_message:
         m, id =  server_message.split()
-        print(f"{m} {id}")
+        # print(f"{m} {id}")
         return m, int(id)
 
     return server_message.strip(),0
 
 def send_chunk(UDPSocket,destination_port,chunk_id , chunk):
     
-    chunk = chunk.encode()
     header_msg = f"{chunk_id} {len(chunk)}"
     header_msg = header_msg.ljust(headerSize).encode()
     
+    # print(f"Header Sent: {header_msg} Chunk is {chunk[:10]}")
+    
     UDPSocket.sendto(header_msg, (localIP, destination_port))
     
-    message =  chunk
     
-    UDPSocket.sendto(message, (localIP, destination_port))
+    UDPSocket.sendto(chunk, (localIP, destination_port))
 
 def get_chunk(UDPSocket ,blocking = False,time_out = 0.1):
     UDPSocket.setblocking(blocking)
@@ -77,10 +69,13 @@ def get_chunk(UDPSocket ,blocking = False,time_out = 0.1):
     try:
         initial_header = UDPSocket.recvfrom(headerSize)[0].decode()
         
+        # print(initial_header)
+        
         chunk_id,chunk_len = initial_header.split()
         chunk_id,chunk_len = int(chunk_id),int(chunk_len)
         
-        chunk = UDPSocket.recvfrom(chunk_len)[0].decode()
+        chunk = UDPSocket.recvfrom(chunk_len)[0]
+        
     except socket.timeout:
         pass
         # print("It timed out")
@@ -110,24 +105,3 @@ def get_chunk(UDPSocket ,blocking = False,time_out = 0.1):
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    try:
-        server_message = UDPSocket.recvfrom(bufferSize)[0].decode()
-    except:
-        server_message = exp_message
-        # print("Timed out")
-        
-    if req_chunk in server_message or end_message in server_message:
-        m, id =  server_message.split()
-        return m, int(id)
-
-    return server_message,0

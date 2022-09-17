@@ -145,7 +145,7 @@ def make_server_t(index):
             
     hash = hashlib.md5(b"".join(data)).hexdigest()
 
-    print(f"Hash of file sent:{hash}")
+    print(f"Server thread {index} says: Hash of file sent:{hash}")
     
     # print("".join(data))
     
