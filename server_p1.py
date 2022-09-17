@@ -1,5 +1,4 @@
 
-from re import S
 import numpy as np
 from constants import *
 import socket
@@ -47,6 +46,9 @@ index_to_split_chunk = np.array_split(oneton, n)
 is_everyone_done = [False]*n
 is_everyone_done_count = 0
 
+# for i in range()
+
+# ServerTcps = [good_tcp(port) for port in server_tcp_ports]
 
 TCP_Clients = []
 
@@ -67,128 +69,98 @@ TCP_Clients = sorted(TCP_Clients, key=lambda x: x.getsockname()[1])
 
 print("Hello")
 
-# Server_List = []
 
-# ServerBuffers = [set() for i in range(n)]
+def make_server_t(index):
+    
+    global data
+    global cache
+    global is_everyone_done
+    global is_everyone_done_count
+    global lock
+    
+    # is_everyone_satisfied = [False for i in range(n)]
+    
+    # print("Hello")
+    
 
+    myTCP = TCP_Clients[index]
+    UDPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+    UDPSocket.bind((localIP,server_udp_ports[index]))
 
+    
+    for id in index_to_split_chunk[index]:
+        send_chunk(myTCP,id,data[id])
+    
+    send_chunk(myTCP,-2,end_message)
+    
+    print(f"Sent initial Chunks to {index}: {len(index_to_split_chunk[index])}")
 
-class Server:
-    # global ServerBuffers
     
-    def __init__(self,index):
+    while True:    
+        if is_everyone_done_count == n:
+            send_data(UDPSocket,udp_client_ports[index],f"{end_message} {index}")
+            break
         
-        self.req_buffer = set()
         
-        self.TCPSocket = TCP_Clients[index]
-        self.UDPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-        self.UDPSocket.bind((localIP,server_udp_ports[index]))
-        self.index = index
         
-    
-        print(f"Sent initial Chunks to {index}: {len(index_to_split_chunk[index])}")
+        message, id = get_data(UDPSocket)
         
-    def add_element_to_list(self,id):
-        self.req_buffer.add(id)
-    
-    def get_init_data(self):
-        
-        for id in index_to_split_chunk[self.index]:
-            send_chunk(self.TCPSocket,id,data[id])
-    
-        send_chunk(self.TCPSocket,-2,end_message)
-        
-    
-    def handle_load(self):
-        global Server_List
-        
-        global cache
-        global is_everyone_done
-        global is_everyone_done_count
-        global lock
+        if skip_mesaage not in message:
+            print(f"I got {message} {id}")
 
-        while True:
-            
-            if is_everyone_done_count == n:
-                send_data(self.UDPSocket,udp_client_ports[self.index],f"{end_message} {self.index}")
-                break
+        
                 
-            req_for = -1
-            
-            # with lock:
-            # print(Server_List)
-            print(self.index)
-            if len(self.req_buffer) != 0:
-                    req_for = self.req_buffer.pop()
-            
-            if req_for != -1:
-                send_data(self.UDPSocket,udp_client_ports[self.index], req_chunk + " " + str(req_for))
-                print(f"Asked for {req_for}")
 
-            message, id = get_data(self.UDPSocket)
-            
-            if skip_mesaage not in message:
-                print(f"I got {message} {id}")
-            
-            if req_chunk in message:
-                with lock:
-                    cache_message = cache.get(id)
-                    
-                if cache_message  == "":
-                    print(req_chunk + " " + str(id))
-            
-                    for server in Server_List:
-                        
-                        if server.index != self.index:
-                            # with lock:
-                                server.add_element_to_list(id)
-                                print(server.req_buffer)
-                else:
-                    print(f"Able to sen from cache {id} {cache_message[0:10]}")
-                    send_data(self.UDPSocket,udp_client_ports[self.index], giving_chunk)
-                    send_chunk(self.TCPSocket,id,cache_message)
-        
-            elif giving_chunk in message:
-                with lock:
-                    chunk_id, chunk = get_chunk(self.TCPSocket)   
-                    print(f"Got chunk {chunk[0:10]}")   
-                    if chunk != "":
-                            cache.put(chunk_id,chunk)
-                    
-            elif end_message in message:
-            
-                print(is_everyone_done)
+        if req_chunk in message:
+            with lock:
+                cache_message = cache.get(id)
                 
-                with lock:
-                    if not is_everyone_done[self.index]:
-                        is_everyone_done_count += 1
-                    is_everyone_done[self.index] = True
-
-            elif skip_mesaage in message:
-                pass
-            elif exp_message in message:
-                print(f" Client {self.index} did nothing ")
-
+            if cache_message  == "":
+                print(req_chunk + " " + str(id))
+                for udp_port in udp_client_ports:
+                    if udp_port != udp_client_ports[index]:
+                        send_data(UDPSocket,udp_port, req_chunk + " " + str(id))
             else:
-                print(f"Yeh konsa packet aagya {message} {id}")
+                print(f"Able to sen from cache {id} {cache_message[0:10]}")
+                send_data(UDPSocket,udp_client_ports[index], giving_chunk)
+                send_chunk(myTCP,id,cache_message)
+
+            
+        elif giving_chunk in message:
+            with lock:
+                chunk_id, chunk = get_chunk(myTCP)   
+                print(f"Got chunk {chunk[0:10]}")   
+                if chunk != "":
+                        cache.put(chunk_id,chunk)
+        elif end_message in message:
+            
+            print(is_everyone_done)
+            
+            with lock:
+                if not is_everyone_done[index]:
+                    is_everyone_done_count += 1
+                is_everyone_done[index] = True
                 
                 
-        hash = hashlib.md5("".join(data).encode()).hexdigest()
-        
-        print(hash)
-        
+                
+        elif skip_mesaage in message:
+            pass
+        elif exp_message in message:
+                print(f" Client {index} did nothing ")
+        else:
+            print(f"Yeh konsa packet aagya {message} {id}")
+            
+    hash = hashlib.md5("".join(data).encode()).hexdigest()
+
+    print(hash)
     
-
-Server_List = [Server(i) for i in range(n)]    
-
-for server in Server_List:
-    server.get_init_data()
-        
+    # print("".join(data))
+    
     
 ts = []
 
-for server in Server_List:
-    t = threading.Thread(target=server.handle_load(),args=[])
+for i in range(n):
+    t = threading.Thread(target=make_server_t,args=[i])
     t.start()
     ts.append(t)
     
