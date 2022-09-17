@@ -31,7 +31,7 @@ req_chunk = "Req_Chun"
 exp_message = "Pack_Exp"
 
 
-port   = 24400
+port   = 24980
 
 server_tcp = port
 port += 1

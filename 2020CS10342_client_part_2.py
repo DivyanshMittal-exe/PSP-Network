@@ -1,4 +1,5 @@
 from re import T
+from statistics import mean
 from constants import *
 import socket
 from LRU import  LRU
@@ -9,6 +10,8 @@ import hashlib
 import time
 
 import random
+import matplotlib.pyplot as plt
+
 
 
 
@@ -31,6 +34,9 @@ class Client:
         self.am_i_done = False
         
         
+        
+        
+        
         self.UDPSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         self.UDPSocket.bind((localIP,udp_client_ports[index]))
         
@@ -48,7 +54,6 @@ class Client:
     
     def client_fetch(self):
         while not self.am_i_done:
-                            
             msg_to_send = f"{end_message} {self.index}"
         
             if len(self.chunks_not_with_me)!= 0 :
@@ -73,6 +78,8 @@ class Client:
                 #DEBUG print("Kuch nhi aaya")
             elif chunk_id in self.chunks_not_with_me:
                 #DEBUG print(f"Got {chunk_id}: {chunk[:5]}")
+
+                
                 self.data_with_me[chunk_id] = chunk
                 self.chunks_not_with_me.remove(chunk_id)
 
@@ -90,6 +97,8 @@ class Client:
                     self.am_i_done = True
                     self.TCPSocket.shutdown(socket.SHUT_RDWR)
                     self.TCPSocket.close()           
+                    
+                    # print(f"{self.index} had an RTT of {mean(self.RTTS)}")
 
                     hash = hashlib.md5(b"".join(self.data_with_me)).hexdigest()
                     print(f"Client {self.index} says: Hash of file recieved:{hash}")
@@ -102,6 +111,7 @@ for client in clients:
     client.get_init_data()
     
 
+start = time.time()
 
 ts = []
 
@@ -120,7 +130,9 @@ for t in ts:
     t.join()
 
 
-        
+end = time.time()
 
+with open(data_file, "a") as f:
+    f.write(f"{n}, {end-start} \n")
 
 
