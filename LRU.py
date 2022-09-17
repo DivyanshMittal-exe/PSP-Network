@@ -10,7 +10,7 @@ class LRU:
         self.max_chunks = cache_size
     
     def get(self,index):
-        # print(f"Cache State is: {self.cache}")
+        # #DEBUG print(f"Cache State is: {self.cache}")
         if index in self.cache:
             self.cache.remove(index)
             self.cache.append(index)
@@ -27,7 +27,7 @@ class LRU:
             self.cache.append(index)
             self.cache_dict[index] = message
             
-        print(f"Cache State is: {self.cache}")
+        #DEBUG print(f"Cache State is: {self.cache}")
     
 
             

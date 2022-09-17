@@ -1,4 +1,4 @@
-n = 5
+n =10
 cache_size = n
 
 data_file = "A2_small_file.txt"
@@ -12,7 +12,6 @@ delimSize = 0
 bufferSize = chunkSize + headerSize
 
 data_for_chunk_count =  ""
-# Here read as binary as non utf-8
 with open(data_file, 'rb') as f:
     data_for_chunk_count = f.read()
 
@@ -21,7 +20,6 @@ chunk_count = len(data_for_chunk_count) //chunkSize
 if  len(data_for_chunk_count)  % chunkSize != 0:
     chunk_count += 1
 
-# print(chunk_count)
 del data_for_chunk_count
 
 
@@ -33,7 +31,7 @@ req_chunk = "Req_Chun"
 exp_message = "Pack_Exp"
 
 
-port   = 11600
+port   = 24400
 
 server_tcp = port
 port += 1
