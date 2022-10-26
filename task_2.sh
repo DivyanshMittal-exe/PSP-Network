@@ -1,0 +1,11 @@
+./waf --run "scratch/t2 --adr=5Mbps --cdr=3Mbps "
+./waf --run "scratch/t2 --adr=5Mbps --cdr=5Mbps "
+./waf --run "scratch/t2 --adr=5Mbps --cdr=10Mbps" 
+./waf --run "scratch/t2 --adr=5Mbps --cdr=15Mbps" 
+./waf --run "scratch/t2 --adr=5Mbps --cdr=30Mbps" 
+
+./waf --run "scratch/t2 --adr=4Mbps --cdr=1Mbps "
+./waf --run "scratch/t2 --adr=4Mbps --cdr=2Mbps "
+./waf --run "scratch/t2 --adr=4Mbps --cdr=4Mbps "
+./waf --run "scratch/t2 --adr=4Mbps --cdr=8Mbps "
+./waf --run "scratch/t2 --adr=4Mbps --cdr=12Mbps" 
